@@ -2,10 +2,10 @@
 	color: white;
 	grid-area: c;
 	background-color: rgb(33, 42, 56);
-  border: 1px solid white;
+  border-right: 1px solid white;
   }
 
 .images img{
-  width: 900px;
+  width: 800px;
   height: 300px;
 }

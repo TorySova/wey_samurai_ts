@@ -7,7 +7,7 @@ const Profile = () => {
 	return (
 		<div className={s.content}>
 			<div className={s.images}>
-				<img src="https://www.wpexplorer.com/wp-content/uploads/wordpress-image-optimization-guide.jpg" />
+				<img src="https://image.freepik.com/free-photo/_1232-2082.jpg" />
 			</div>
 			<Info />
 			<MyPosts />
