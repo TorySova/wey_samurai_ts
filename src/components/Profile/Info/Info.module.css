@@ -1,0 +1,17 @@
+.item {
+	position: relative;
+}
+
+.photo img {
+	width: 200px;
+	border: 1px solid black;
+	border-radius: 50%;
+	position: absolute;
+	transform: translateY(-60%);
+	margin: 10px;
+}
+
+.info {
+	position: absolute;
+	margin: 80px 500px 50px 30px;
+}
