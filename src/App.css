@@ -9,37 +9,3 @@
   grid-template-rows: 60px 1fr;
   grid-template-columns: 3fr 5fr 4fr;
 }
-
-.nav{
-  text-align: center;
-  color: white;
-  grid-area: n;
-  background-color: rgb(33, 42, 56);
-  border: 1px solid white;
-}
-
-.header {
-  grid-area: h;
-  background-color: rgb(33, 42, 56);
-  border: 1px solid white;
-}
-
-.header img {
-  padding: 5px 600px 5px 80px;
-  width: 50px
-}
-
-.content {
-  color: white;
-  grid-area: c;
-  background-color: rgb(33, 42, 56);
-  border: 1px solid white;
-}
-
-.streem {
-  color: white;
-  text-align: center;
-  grid-area: s;
-  background-color: rgb(33, 42, 56);
-  border: 1px solid white;
-}

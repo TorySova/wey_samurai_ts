@@ -1,0 +1,14 @@
+.content {
+	color: white;
+	grid-area: c;
+	background-color: rgb(33, 42, 56);
+	border: 1px solid white;
+  }
+
+  .item {
+	  color: white;
+  }
+
+  .posts {
+	  
+  }
