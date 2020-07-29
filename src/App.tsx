@@ -1,16 +1,22 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
-import Event from './components/Event/Event';
+import Dialogs from './components/Dialogs/Dialogs';
 
 const App = () => {
   return (
-    <div className="appWrapper">
-      <Navbar />
-      <Profile />
-      <Event />
-    </div>
+    <BrowserRouter>
+      <div className="appWrapper">
+        <Navbar />
+        <div className="content">
+          <Route path='/profile' render={() => <Profile />} />
+          <Route path='/dialogs' render={() => <Dialogs />} />
+        </div>
+
+      </div>
+    </BrowserRouter>
   );
 }
 

@@ -1,9 +1,14 @@
 .appWrapper {
   display: grid;
   margin: 0 auto;
-
   grid-template-areas:
   "n c s";
+  grid-template-columns: 2fr 7fr 3fr;
+  background-color: rgb(44, 54, 71);
+}
 
-  grid-template-columns: 3fr 5fr 4fr;
+.content {
+  grid-area: c;
+  color: white;
+  border-right: 1px solid white;
 }
