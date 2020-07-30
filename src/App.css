@@ -5,6 +5,8 @@
   "n c s";
   grid-template-columns: 2fr 7fr 3fr;
   background-color: rgb(44, 54, 71);
+  min-height: 100vh;
+  height: 100%; 
 }
 
 .content {
