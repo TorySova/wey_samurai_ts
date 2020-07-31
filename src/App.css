@@ -3,14 +3,22 @@
   margin: 0 auto;
   grid-template-areas:
   "n c s";
-  grid-template-columns: 2fr 7fr 3fr;
-  background-color: rgb(44, 54, 71);
+  grid-template-columns: 3fr 6fr 3fr;
+  background-color: rgb(53, 55, 58);
   min-height: 100vh;
   height: 100%; 
 }
 
 .content {
-  grid-area: c;
+  /* grid-area: c; */
+  display: grid;
+  grid-template-rows: 50px 1fr;
   color: white;
   border-right: 1px solid white;
+}
+
+.header{
+  border-bottom: 1px solid white;
+  font-size: 20px;
+  text-align: center;
 }

@@ -11,6 +11,7 @@ const App = () => {
       <div className="appWrapper">
         <Navbar />
         <div className="content">
+          <div className="header">header</div>
           <Route path='/profile' render={() => <Profile />} />
           <Route path='/dialogs' render={() => <Dialogs />} />
         </div>

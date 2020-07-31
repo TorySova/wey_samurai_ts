@@ -1,6 +1,7 @@
 .nav{
     grid-area: n;
     border-right: 1px solid white;
+
   }
 
   .item {
@@ -15,14 +16,14 @@
   .item a.activeLink {
     padding: 10px 26px;
     border-radius: 30px;
-    background: rgb(235, 182, 67);
-    color: black; 
+    background: rgb(255, 192, 57);
+    color: white; 
   }
 
-  .item :hover{
+  .item a:hover{
     padding: 10px 26px;
     border-radius: 30px;
     background: rgb(235, 182, 67);
-    opacity: 0.7;
-    color: black;
+    color: white;
+    opacity: 0.8;
   }

@@ -8,3 +8,38 @@
   width: 100%;
   border-top: 1px solid white;
 }
+
+.textarea {
+  display: block;
+  padding-bottom: 5px;
+  margin: 5px;
+  outline: none;
+  width: 94%;
+  resize: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 20px;
+  color: black;
+  border: 0;
+}
+
+.textarea:hover{ 
+  border: 3px solid rgb(255, 192, 57);
+}
+
+.button {
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background: rgb(255, 192, 57);
+  color: white;
+  border: 0;
+  outline: none;
+}
+
+.button:hover{
+  border: 1px solid black;
+}
+
+
+
