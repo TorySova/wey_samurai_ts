@@ -15,7 +15,6 @@ const App = () => {
           <Route path='/profile' render={() => <Profile />} />
           <Route path='/dialogs' render={() => <Dialogs />} />
         </div>
-
       </div>
     </BrowserRouter>
   );
