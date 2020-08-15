@@ -54,4 +54,13 @@ let state: RootStateType = {
     sidebar: {}
 }
 
+export const addPost = (postText: string) => {
+    const newText = {
+        id: new Date().getTime(),
+        message: postText,
+        likeCounter: 0
+    }
+    state.profilePage.posts.push(newText)
+}
+
 export default state;
