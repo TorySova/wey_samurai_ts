@@ -4,7 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
-import state, { addPost } from './redux/state'
+import state, { addPost } from './redux/state';
 
 
 const App = () => {
@@ -16,8 +16,7 @@ const App = () => {
         <div className="content">
           <div className="header">header</div>
           <Route path='/profile'
-            render={() => <Profile posts={state.profilePage.posts} addPost={addPost}/>}
-          />
+            render={() => <Profile posts={state.profilePage.posts} addPost={addPost}/>}/>
           <Route path='/dialogs'
             render={() => <Dialogs dialogs={state.dialogsPage.dialogs}
             messages={state.dialogsPage.messages}/>}/>
