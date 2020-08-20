@@ -1,8 +1,7 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent  } from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 import { PostsType } from '../../../redux/state';
-import Message from '../../Dialogs/Message/Message';
 
 type MyPostsPropsType = {
 	posts: Array<PostsType>
@@ -21,6 +20,8 @@ const MyPosts = (props: MyPostsPropsType) => {
 			props.addPostCallback(props.message);
 			props.changeNewText('')
 	}
+
+
 
 	const newTextHeandler = (e: ChangeEvent<HTMLTextAreaElement>) => { props.changeNewText(e.currentTarget.value)}
 

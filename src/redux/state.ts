@@ -1,4 +1,11 @@
-import { renderTree } from './../render';
+let renderTree = () => {
+    console.log('hello');
+    
+}
+
+export const subscribe = (observer: () => void) => {
+    renderTree = observer;
+}
 
 
 export type MessagesType = {
@@ -66,12 +73,12 @@ export const addPost = (postText: string) => {
         likeCounter: 0
     }
     state.profilePage.posts.push(newText);
-    renderTree(state);
+    renderTree();
 }
 
 export const changeNewText = (newText: string) => {
     state.profilePage.newPostText = newText;
-    renderTree(state);
+    renderTree();
 }
 
 export default state;
