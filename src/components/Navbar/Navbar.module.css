@@ -1,7 +1,9 @@
 .nav{
     grid-area: n;
     border-right: 1px solid white;
-
+    max-height: 100vh;
+    position: sticky;
+    top: 0;
   }
 
   .item {

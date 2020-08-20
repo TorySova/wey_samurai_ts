@@ -21,6 +21,7 @@
   border-radius: 20px;
   color: black;
   border: 0;
+  border: 3px solid rgb(255, 255, 255);
 }
 
 .textarea:hover{ 
@@ -35,6 +36,11 @@
   color: white;
   border: 0;
   outline: none;
+  border: 1px solid black;
+}
+
+.button:hover{
+  border: 1px solid white;
 }
 
 
