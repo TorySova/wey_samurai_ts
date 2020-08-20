@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 import { PostsType } from '../../../redux/state';
+import Message from '../../Dialogs/Message/Message';
 
 type MyPostsPropsType = {
 	posts: Array<PostsType>
 	addPostCallback: (postText: string) => void
+	message: string
+	changeNewText: (newText: string) => void
 }
 
 const MyPosts = (props: MyPostsPropsType) => {
 
 	let postElements = props.posts.map(it => <Post message={it.post} likeCounter={it.likeCounter} />)
 
-	const postText = React.createRef<HTMLTextAreaElement>()
+	
 
 	const addPost = () => {
-		if (postText.current) {
-			props.addPostCallback(postText.current.value);
-			postText.current.value = ''
-		}
+			props.addPostCallback(props.message);
+			props.changeNewText('')
 	}
+
+	const newTextHeandler = (e: ChangeEvent<HTMLTextAreaElement>) => { props.changeNewText(e.currentTarget.value)}
 
 	return (
 		<div className={s.elem}>
@@ -29,7 +32,8 @@ const MyPosts = (props: MyPostsPropsType) => {
 					<textarea placeholder="Enter your message"
 						className={s.textarea}
 						maxLength={124}
-						ref={postText} />
+						value={props.message}
+						onChange={newTextHeandler} />
 					<button className={s.button} onClick={addPost} >Add post</button>
 				</div>
 				<div className={s.posts}>

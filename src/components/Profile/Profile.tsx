@@ -6,13 +6,18 @@ import {PostsType} from '../../redux/state'
 type PropsType = {
 	posts: Array<PostsType>
 	addPost: (postText: string) => void
+	message: string
+	changeNewText: (newText: string) => void
 }
 
 const Profile = (props: PropsType) => {
 	return (
 		<div>
 			<Info />
-			<MyPosts posts={props.posts} addPostCallback={props.addPost} />
+			<MyPosts posts={props.posts} 
+				addPostCallback={props.addPost}
+				message={props.message}
+				changeNewText={props.changeNewText}/>
 		</div> 
 	)
 }

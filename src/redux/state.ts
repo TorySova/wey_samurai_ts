@@ -15,6 +15,7 @@ export type PostsType = {
     likeCounter: number
 }
 export type ProfilePageType = {
+    newPostText: string
     posts: Array<PostsType>
 }
 export type DialogsPageType = {
@@ -35,7 +36,8 @@ let state: RootStateType = {
             { post: "Hello! It`s my new App!", id: 1, likeCounter: 5 },
             { post: "Today I'm happy", id: 2, likeCounter: 18 },
             { post: "Welcome", id: 3, likeCounter: 10 },
-        ]
+        ],
+        newPostText: ''
     },
     dialogsPage: {
          dialogs: [
@@ -63,7 +65,12 @@ export const addPost = (postText: string) => {
         post: postText,
         likeCounter: 0
     }
-    state.profilePage.posts.push(newText)
+    state.profilePage.posts.push(newText);
+    renderTree(state);
+}
+
+export const changeNewText = (newText: string) => {
+    state.profilePage.newPostText = newText;
     renderTree(state);
 }
 
