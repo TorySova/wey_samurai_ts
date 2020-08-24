@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/wey_samurai_ts/static/css/main.e0efe4ae.chunk.css",
+    "main.js": "/wey_samurai_ts/static/js/main.83961b6e.chunk.js",
+    "main.js.map": "/wey_samurai_ts/static/js/main.83961b6e.chunk.js.map",
+    "runtime-main.js": "/wey_samurai_ts/static/js/runtime-main.59bf36b3.js",
+    "runtime-main.js.map": "/wey_samurai_ts/static/js/runtime-main.59bf36b3.js.map",
+    "static/js/2.e7724d1a.chunk.js": "/wey_samurai_ts/static/js/2.e7724d1a.chunk.js",
+    "static/js/2.e7724d1a.chunk.js.map": "/wey_samurai_ts/static/js/2.e7724d1a.chunk.js.map",
+    "index.html": "/wey_samurai_ts/index.html",
+    "precache-manifest.efefd407504c5ae4e925c591094a05f7.js": "/wey_samurai_ts/precache-manifest.efefd407504c5ae4e925c591094a05f7.js",
+    "service-worker.js": "/wey_samurai_ts/service-worker.js",
+    "static/css/main.e0efe4ae.chunk.css.map": "/wey_samurai_ts/static/css/main.e0efe4ae.chunk.css.map",
+    "static/js/2.e7724d1a.chunk.js.LICENSE.txt": "/wey_samurai_ts/static/js/2.e7724d1a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.59bf36b3.js",
+    "static/js/2.e7724d1a.chunk.js",
+    "static/css/main.e0efe4ae.chunk.css",
+    "static/js/main.83961b6e.chunk.js"
+  ]
+}
