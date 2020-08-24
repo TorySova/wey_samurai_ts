@@ -1,12 +1,10 @@
 let renderTree = () => {
-    console.log('hello');
-    
+    console.log('hello');   
 }
 
 export const subscribe = (observer: () => void) => {
     renderTree = observer;
 }
-
 
 export type MessagesType = {
     message: string
@@ -44,7 +42,7 @@ let state: RootStateType = {
             { post: "Today I'm happy", id: 2, likeCounter: 18 },
             { post: "Welcome", id: 3, likeCounter: 10 },
         ],
-        newPostText: ''
+        newPostText: '',
     },
     dialogsPage: {
          dialogs: [
@@ -57,11 +55,11 @@ let state: RootStateType = {
           
         messages: [
             { message: "Hello", id: 1 },
-            { message: "Wat`s up?", id: 2 },
+            { message: ":)", id: 2 },
             { message: "Wow", id: 3 },
             { message: "Ahahaha", id: 4 },
             { message: "I`m fine(:", id: 5 },
-          ]
+          ],
     },
     sidebar: {}
 }
@@ -80,5 +78,6 @@ export const changeNewText = (newText: string) => {
     state.profilePage.newPostText = newText;
     renderTree();
 }
+
 
 export default state;

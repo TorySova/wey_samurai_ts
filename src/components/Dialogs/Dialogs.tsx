@@ -10,8 +10,10 @@ type PropsType = {
 }
 
 const Dialogs = (props: PropsType) => {
-    let dialodsElements = props.dialogs.map(it => <DialogItem name={it.name} id={it.id} /> );
-    let messageElements = props.messages.map(elem => <Message message={elem.message} /> );
+    let dialodsElements = props.dialogs.map(it => <DialogItem name={it.name} id={it.id} />);
+    let messageElements = props.messages.map(elem => <Message message={elem.message} />);
+
+ 
 
     return (
         <div className={s.dialogs}>
@@ -20,7 +22,13 @@ const Dialogs = (props: PropsType) => {
             </div>
             <div className={s.messagesItem}>
                 {messageElements}
+                <div>
+                <textarea placeholder="Enter your message"
+                    className={s.textarea}/>
+                <button className={s.button}>Send</button>
             </div>
+            </div>
+            
         </div>
     )
 }

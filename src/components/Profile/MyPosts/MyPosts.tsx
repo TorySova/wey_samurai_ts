@@ -1,4 +1,4 @@
-import React, { ChangeEvent  } from 'react';
+import React, { ChangeEvent } from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 import { PostsType } from '../../../redux/state';
@@ -14,16 +14,12 @@ const MyPosts = (props: MyPostsPropsType) => {
 
 	let postElements = props.posts.map(it => <Post message={it.post} likeCounter={it.likeCounter} />)
 
-	
-
 	const addPost = () => {
-			props.addPostCallback(props.message);
-			props.changeNewText('')
+		props.addPostCallback(props.message);
+		props.changeNewText('')
 	}
 
-
-
-	const newTextHeandler = (e: ChangeEvent<HTMLTextAreaElement>) => { props.changeNewText(e.currentTarget.value)}
+	const newTextHeandler = (e: ChangeEvent<HTMLTextAreaElement>) => { props.changeNewText(e.currentTarget.value) }
 
 	return (
 		<div className={s.elem}>
