@@ -59,6 +59,7 @@ let state: RootStateType = {
             { message: "Wow", id: 3 },
             { message: "Ahahaha", id: 4 },
             { message: "I`m fine(:", id: 5 },
+            { message: "(:", id: 6 },
           ],
     },
     sidebar: {}
