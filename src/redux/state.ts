@@ -1,11 +1,3 @@
-let renderTree = () => {
-    console.log('hello');   
-}
-
-export const subscribe = (observer: () => void) => {
-    renderTree = observer;
-}
-
 export type MessagesType = {
     message: string
     id: number
@@ -26,6 +18,7 @@ export type ProfilePageType = {
 export type DialogsPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessagesType>
+    newMessageText: string
 }
 export type SidebarType = {}
 export type RootStateType = {
@@ -34,51 +27,68 @@ export type RootStateType = {
     sidebar: SidebarType
 }
 
-
-let state: RootStateType = {
-    profilePage: {
-        posts: [
-            { post: "Hello! It`s my new App!", id: 1, likeCounter: 5 },
-            { post: "Today I'm happy", id: 2, likeCounter: 18 },
-            { post: "Welcome", id: 3, likeCounter: 10 },
-        ],
-        newPostText: '',
-    },
-    dialogsPage: {
-         dialogs: [
-            { name: "Ed", id: 1 },
-            { name: "Alina", id: 2 },
-            { name: "Oksana", id: 3 },
-            { name: "Sasha", id: 4 },
-            { name: "Tanya", id: 5 },
-          ],
-          
-        messages: [
-            { message: "Hello", id: 1 },
-            { message: ":)", id: 2 },
-            { message: "Wow", id: 3 },
-            { message: "Ahahaha", id: 4 },
-            { message: "I`m fine(:", id: 5 },
-            { message: "(:", id: 6 },
-          ],
-    },
-    sidebar: {}
+export type StoreType = {
+    _state: RootStateType
+    changeNewText: (newText: string) => void
+    addPost: (postText: string) => void
+    subscribe: (observer: () => void) => void
+    _renderTree: () => void
+    getState: () => RootStateType
 }
 
-export const addPost = (postText: string) => {
-    const newText = {
-        id: new Date().getTime(),
-        post: postText,
-        likeCounter: 0
+let store: StoreType = {
+    _state: {
+        profilePage: {
+            posts: [
+                { post: "Hello! It`s my new App!", id: 1, likeCounter: 5 },
+                { post: "Today I'm happy", id: 2, likeCounter: 18 },
+                { post: "Welcome", id: 3, likeCounter: 10 },
+            ],
+            newPostText: '',
+        },
+        dialogsPage: {
+             dialogs: [
+                { name: "Ed", id: 1 },
+                { name: "Alina", id: 2 },
+                { name: "Oksana", id: 3 },
+                { name: "Sasha", id: 4 },
+                { name: "Tanya", id: 5 },
+              ],
+              
+            messages: [
+                { message: "Hello", id: 1 },
+                { message: ":)", id: 2 },
+                { message: "Wow", id: 3 },
+                { message: "Ahahaha", id: 4 },
+                { message: "I`m fine(:", id: 5 },
+                { message: "(:", id: 6 },
+              ],
+            newMessageText: "",
+        },
+        sidebar: {}
+    },
+    changeNewText(newText: string) {
+        this._state.profilePage.newPostText = newText;
+        this._renderTree();
+    },
+    addPost(postText: string) {
+        const newText = {
+            id: new Date().getTime(),
+            post: postText,
+            likeCounter: 0
+        }
+        this._state.profilePage.posts.push(newText);
+        this._renderTree();
+    },
+    subscribe(observer) {
+        this._renderTree = observer;
+    },
+    _renderTree() {
+        console.log('state chenget');   
+    },
+    getState(){
+        return this._state
     }
-    state.profilePage.posts.push(newText);
-    renderTree();
 }
 
-export const changeNewText = (newText: string) => {
-    state.profilePage.newPostText = newText;
-    renderTree();
-}
-
-
-export default state;
+export default store;

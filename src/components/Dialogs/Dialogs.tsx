@@ -13,8 +13,6 @@ const Dialogs = (props: PropsType) => {
     let dialodsElements = props.dialogs.map(it => <DialogItem name={it.name} id={it.id} />);
     let messageElements = props.messages.map(elem => <Message message={elem.message} />);
 
- 
-
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItem}>

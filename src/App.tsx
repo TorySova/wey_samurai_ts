@@ -4,14 +4,19 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
-import state, { addPost, changeNewText } from './redux/state';
 import Header from './components/Header/Header';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
+import { StoreType } from './redux/state';
 
 
-const App = () => {
+type PropsType = {
+  store: StoreType
+}
+
+const App = (props: PropsType) => {
+  const state = props.store.getState()
 
   return (
     <BrowserRouter>
@@ -19,12 +24,11 @@ const App = () => {
         <Navbar />
         <div className="content">
           <Header />
-
           <Route path='/profile'
             render={() => <Profile posts={state.profilePage.posts}
-              addPost={addPost}
+              addPost={props.store.addPost.bind(props.store)}
               message={state.profilePage.newPostText}
-              changeNewText={changeNewText} />} />
+              changeNewText={props.store.changeNewText.bind(props.store)} />} />
           <Route path='/dialogs'
             render={() => <Dialogs dialogs={state.dialogsPage.dialogs}
               messages={state.dialogsPage.messages} />} />
