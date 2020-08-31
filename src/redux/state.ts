@@ -1,3 +1,5 @@
+import { ReactType } from "react"
+
 export type MessagesType = {
     message: string
     id: number
@@ -29,11 +31,28 @@ export type RootStateType = {
 
 export type StoreType = {
     _state: RootStateType
-    changeNewText: (newText: string) => void
-    addPost: (postText: string) => void
+    // changeNewText: (newText: string) => void
+    // addPost: (postText: string) => void
     subscribe: (observer: () => void) => void
     _renderTree: () => void
     getState: () => RootStateType
+    dispatch: (action: ActionTypes) => void
+}
+
+export type ActionTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changeNewTextAC>
+
+export const addPostAC = (postText: string) => {
+    return {
+        type: "ADD-POST",
+        postText: postText
+    } as const
+}
+
+export const changeNewTextAC = (newText: string) => {
+    return {
+        type: "CHANGE-NEW-TEXT",
+        newText: newText
+    } as const
 }
 
 let store: StoreType = {
@@ -67,19 +86,6 @@ let store: StoreType = {
         },
         sidebar: {}
     },
-    changeNewText(newText: string) {
-        this._state.profilePage.newPostText = newText;
-        this._renderTree();
-    },
-    addPost(postText: string) {
-        const newText = {
-            id: new Date().getTime(),
-            post: postText,
-            likeCounter: 0
-        }
-        this._state.profilePage.posts.push(newText);
-        this._renderTree();
-    },
     subscribe(observer) {
         this._renderTree = observer;
     },
@@ -88,6 +94,20 @@ let store: StoreType = {
     },
     getState(){
         return this._state
+    },
+    dispatch(action) {
+        if(action.type === "ADD-POST"){
+            const newText = {
+                id: new Date().getTime(),
+                post: action.postText,
+                likeCounter: 0
+            }
+            this._state.profilePage.posts.push(newText);
+            this._renderTree();
+        } else if (action.type === "CHANGE-NEW-TEXT"){
+            this._state.profilePage.newPostText = action.newText;
+            this._renderTree();
+        }
     }
 }
 
