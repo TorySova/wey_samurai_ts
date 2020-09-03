@@ -1,25 +1,23 @@
 import React from 'react';
 import MyPosts from './MyPosts/MyPosts';
 import Info from './Info/Info';
-import {PostsType, ActionTypes} from '../../redux/state'
+import {PostsType, ProfilePageType, DialogsPageType} from '../../redux/store'
+import { ActionTypes } from '../../redux/dialogsReducer';
+import { Store, CombinedState } from 'redux';
+import ContainerMyPosts from './MyPosts/ContainerMyPosts';
 
 type PropsType = {
-	posts: Array<PostsType>
-	// addPost: (postText: string) => void
-	// changeNewText: (newText: string) => void
-	message: string
-	dispatch: (action: ActionTypes) => void
+	store: Store<CombinedState<{
+		profilePage: ProfilePageType;
+		dialogsPage: DialogsPageType;
+	}>, ActionTypes>
 }
 
 const Profile = (props: PropsType) => {
 	return (
 		<div>
 			<Info />
-			<MyPosts posts={props.posts} 
-				// addPostCallback={props.addPost}
-				// changeNewText={props.changeNewText}
-				message={props.message}
-				dispatch={props.dispatch}/>
+			<ContainerMyPosts store={props.store}/>
 		</div> 
 	)
 }

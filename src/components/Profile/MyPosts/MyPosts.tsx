@@ -1,14 +1,13 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import { PostsType, ActionTypes, addPostAC, changeNewTextAC } from '../../../redux/state';
+import { PostsType } from '../../../redux/store';
 
 type MyPostsPropsType = {
-	posts: Array<PostsType>
-	// addPostCallback: (postText: string) => void
-	// changeNewText: (newText: string) => void
-	message: string
-	dispatch: (action: ActionTypes) => void
+	updateNewPostText: (text: string) => void
+	addPost: () => void
+	posts: PostsType[]
+	newPostText: string
 }
 
 const MyPosts = (props: MyPostsPropsType) => {
@@ -16,13 +15,13 @@ const MyPosts = (props: MyPostsPropsType) => {
 	let postElements = props.posts.map(it => <Post message={it.post} likeCounter={it.likeCounter} />)
 
 	const addPost = () => {
-		props.dispatch(addPostAC(props.message));
+		props.addPost()
 	}
 
 	let newPostElem = React.createRef<HTMLTextAreaElement>();
 	let newTextHeandler = () => {
 		let text = newPostElem.current ? newPostElem.current.value : ""
-		props.dispatch(changeNewTextAC(text))
+		props.updateNewPostText(text)
 	}
 
 	return (
@@ -33,7 +32,7 @@ const MyPosts = (props: MyPostsPropsType) => {
 					<textarea placeholder="Enter your message"
 						className={s.textarea}
 						maxLength={124}
-						value={props.message}
+						value={props.newPostText}
 						onChange={newTextHeandler}
 						ref={newPostElem} />
 					<button className={s.button} onClick={addPost} >Add post</button>

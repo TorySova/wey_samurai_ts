@@ -3,9 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-// import { subscribe } from './redux/state';
 import * as serviceWorker from './serviceWorker';
-import store from './redux/state'
+import store from './redux/redux-store'
 
 
 export let renderTree = () => {

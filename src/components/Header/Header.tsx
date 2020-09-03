@@ -3,7 +3,8 @@ import s from './Header.module.css';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 const Header: React.FunctionComponent<RouteComponentProps> = (props: RouteComponentProps) => {
-    const titleHeader = props.location.pathname.substr(1)
+    const a = props.location.pathname.substr(1)
+    let titleHeader = a[0].toUpperCase() + a.slice(1);
     return <div className={s.header}>
         {titleHeader}
     </div>

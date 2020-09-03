@@ -2,13 +2,14 @@ import React from 'react';
 import s from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import { DialogsType, MessagesType, ActionTypes, sendMessageAC, changeNewMessageAC } from '../../redux/state';
+import { DialogsType, MessagesType } from '../../redux/store';
 
 type PropsType = {
-    dialogs: Array<DialogsType>
-    messages: Array<MessagesType>
-    dispatch: (action: ActionTypes) => void
-    newMessage: string
+    sendMessage: () => void
+    newMessageHeandler: (text: string) => void
+    dialogs: DialogsType[]
+    messages: MessagesType[]
+    newMessageText: string
 }
 
 const Dialogs = (props: PropsType) => {
@@ -16,14 +17,14 @@ const Dialogs = (props: PropsType) => {
     let messageElements = props.messages.map(elem => <Message message={elem.message} />);
 
     const sendMessage = () => {
-        props.dispatch(sendMessageAC(props.newMessage))
+        props.sendMessage()
     }
 
     let newMessageElem = React.createRef<HTMLTextAreaElement>();
-	let newMessageHeandler = () => {
-		let text = newMessageElem.current ? newMessageElem.current.value : ""
-		props.dispatch(changeNewMessageAC(text))
-	}
+    let newMessageHeandler = () => {
+        let text = newMessageElem.current ? newMessageElem.current.value : ""
+        props.newMessageHeandler(text)
+    }
 
     return (
         <div className={s.dialogs}>
@@ -33,15 +34,15 @@ const Dialogs = (props: PropsType) => {
             <div className={s.messagesItem}>
                 {messageElements}
                 <div>
-                <textarea placeholder="Enter your message"
-                    className={s.textarea}
-                    ref={newMessageElem}
-                    value={props.newMessage}
-                    onChange={newMessageHeandler}/>
-                <button className={s.button} onClick={sendMessage}>Send</button>
+                    <textarea placeholder="Enter your message"
+                        className={s.textarea}
+                        ref={newMessageElem}
+                        value={props.newMessageText}
+                        onChange={newMessageHeandler} />
+                    <button className={s.button} onClick={sendMessage}>Send</button>
+                </div>
             </div>
-            </div>
-            
+
         </div>
     )
 }
