@@ -1,3 +1,4 @@
+import { ActionTypes } from './dialogsReducer';
 export type MessagesType = {
     message: string
     id: number
@@ -25,13 +26,13 @@ export type RootStateType = {
     dialogsPage:DialogsPageType
 }
 
-// export type StoreType = {
-//     _state: RootStateType
-//     subscribe: (observer: () => void) => void
-//     _renderTree: () => void
-//     getState: () => RootStateType
-//     dispatch: (action: ActionTypes) => void
-// }
+export type StoreType = {
+    _state: RootStateType
+    subscribe: (observer: () => void) => void
+    _renderTree: () => void
+    getState: () => RootStateType
+    dispatch: (action: ActionTypes) => void
+}
 
 
 

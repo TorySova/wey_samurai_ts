@@ -5,12 +5,15 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './redux/redux-store'
+import StoreContext from './StoreContext';
 
 
 export let renderTree = () => {
   ReactDOM.render(
     <React.StrictMode>
-      <App store={store}/>
+      <StoreContext.Provider value={store}>
+        <App />
+      </StoreContext.Provider>
     </React.StrictMode>,
     document.getElementById('root')
   );

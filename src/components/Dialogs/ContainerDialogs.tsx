@@ -1,34 +1,40 @@
 import React from 'react';
-import { ProfilePageType, DialogsPageType } from '../../redux/store';
-import { sendMessageAC, changeNewMessageAC, ActionTypes } from '../../redux/dialogsReducer';
-import { Store, CombinedState } from 'redux';
+import { sendMessageAC, changeNewMessageAC } from '../../redux/dialogsReducer';
 import Dialogs from './Dialogs';
+import StoreContext from '../../StoreContext';
 
-type PropsType = {
-    store: Store<CombinedState<{
-        profilePage: ProfilePageType;
-        dialogsPage: DialogsPageType;
-    }>, ActionTypes>
-}
+// type PropsType = {
+//     store: Store<CombinedState<{
+//         profilePage: ProfilePageType;
+//         dialogsPage: DialogsPageType;
+//     }>, ActionTypes>
+// }
 
-const ContainerDialogs = (props: PropsType) => {
-    const state = props.store.getState();
-    const sendMessage = () => {
-        if (state.dialogsPage.newMessageText.trim() !== "") {
-            props.store.dispatch(sendMessageAC(state.dialogsPage.newMessageText))
-        }
-    }
-
-    let newMessageHeandler = (text: string) => {
-        props.store.dispatch(changeNewMessageAC(text))
-    }
-
+const ContainerDialogs = () => {
     return (
-        <Dialogs sendMessage={sendMessage}
-            newMessageHeandler={newMessageHeandler}
-            dialogs={state.dialogsPage.dialogs}
-            messages={state.dialogsPage.messages}
-            newMessageText={state.dialogsPage.newMessageText}/>
+        <StoreContext.Consumer>{
+            (store) => {
+                const state = store.getState();
+                const sendMessage = () => {
+                    if (state.dialogsPage.newMessageText.trim() !== "") {
+                        store.dispatch(sendMessageAC(state.dialogsPage.newMessageText))
+                    }
+                }
+
+                let newMessageHeandler = (text: string) => {
+                    store.dispatch(changeNewMessageAC(text))
+                }
+
+                return (
+                    <Dialogs sendMessage={sendMessage}
+                        newMessageHeandler={newMessageHeandler}
+                        dialogs={state.dialogsPage.dialogs}
+                        messages={state.dialogsPage.messages}
+                        newMessageText={state.dialogsPage.newMessageText} />
+                )
+            }
+        }
+        </StoreContext.Consumer>
     )
 }
 

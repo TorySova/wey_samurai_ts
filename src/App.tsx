@@ -7,21 +7,18 @@ import Header from './components/Header/Header';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import { DialogsPageType, ProfilePageType } from './redux/store';
-import { Store, CombinedState } from 'redux';
-import { ActionTypes } from './redux/dialogsReducer';
 import ContainerDialogs from './components/Dialogs/ContainerDialogs';
 
 
-type PropsType = {
-  store: Store<CombinedState<{
-    profilePage: ProfilePageType;
-    dialogsPage: DialogsPageType;
-}>, ActionTypes>
-}
+// type PropsType = {
+//   store: Store<CombinedState<{
+//     profilePage: ProfilePageType;
+//     dialogsPage: DialogsPageType;
+// }>, ActionTypes>
+// }
 
-const App = (props: PropsType) => {
-  const state = props.store.getState()
+const App = () => {
+  // const state = props.store.getState()
 
   return (
     <BrowserRouter>
@@ -30,9 +27,9 @@ const App = (props: PropsType) => {
         <div className="content">
           <Header />
           <Route path='/profile'
-            render={() => <Profile store={props.store}/>} />
+            render={() => <Profile/>} />
           <Route path='/dialogs'
-            render={() => <ContainerDialogs store={props.store} />} />
+            render={() => <ContainerDialogs />} />
           <Route path='/news'
             render={() => <News />} />
           <Route path='/music'
