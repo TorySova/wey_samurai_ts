@@ -1,36 +1,33 @@
 import React from 'react';
 import { addPostAC, changeNewTextAC } from '../../../redux/profileReducer';
 import MyPosts from './MyPosts';
-import StoreContext from '../../../StoreContext';
+import { connect } from 'react-redux';
+import { RootStateType, ProfilePageType } from '../../../redux/store';
+import { ActionTypes } from '../../../redux/dialogsReducer';
 
-// type MyPostsPropsType = {
-// 	store: Store<CombinedState<{
-// 		profilePage: ProfilePageType;
-// 		dialogsPage: DialogsPageType;
-// 	}>, ActionTypes>
+// export type PropsType = {
+//     state: ProfilePageType
+//     dispatch: (action: ActionTypes) => void
 // }
 
-const ContainerMyPosts = () => {
-	return (
-		<StoreContext.Consumer>{
-			(store) => {
-				const state = store.getState();
-				const addPost = () => {
-					if (state.profilePage.newPostText.trim() !== "") {
-						store.dispatch(addPostAC(state.profilePage.newPostText))
-					}
-				}			
-				let newTextHeandler = (text: string) => {
-					store.dispatch(changeNewTextAC(text))
-				}
-				return <MyPosts updateNewPostText={newTextHeandler}
-					addPost={addPost}
-					posts={state.profilePage.posts}
-					newPostText={state.profilePage.newPostText} />
-			}
-		}
-		</StoreContext.Consumer>
-	)
+const mapStateToProps = (state: RootStateType) => {
+	return {
+		posts: state.profilePage.posts,
+		newPostText: state.profilePage.newPostText
+	}
 }
+
+const mapDispatchToProps = (dispatch: (action: ActionTypes) => void) => {
+	return {
+		addPost: () => {
+			dispatch(addPostAC())
+		},
+		updateNewPostText: (text: string) => {
+			dispatch(changeNewTextAC(text))
+		}
+	}
+}
+
+const ContainerMyPosts = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
 
 export default ContainerMyPosts;

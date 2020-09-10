@@ -37,7 +37,7 @@ export const dialodsReducer = (state: DialogsPageType = initialState, action: Ac
     if(action.type === "SEND-MESSAGE"){
         const newMessage = {
             id: new Date().getTime(),
-            message: action.messageText
+            message: state.newMessageText
         };
         state.messages.push(newMessage);
         state.newMessageText = "";
@@ -52,10 +52,10 @@ export type ActionTypes = ActionDialogsTypes | ActionProfileTypes
 export type ActionDialogsTypes = ReturnType<typeof sendMessageAC> | 
                             ReturnType<typeof changeNewMessageAC>
 
-export const sendMessageAC = (messageText: string) => {
+export const sendMessageAC = () => {
     return {
         type: "SEND-MESSAGE",
-        messageText: messageText
+        // messageText: messageText
     } as const
 }
 

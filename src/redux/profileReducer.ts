@@ -20,11 +20,10 @@ const initialState: initialStateType = {
 }
 
 export const profileReducer = (state: ProfilePageType = initialState, action: ActionTypes) => {
-    // const {state, action} = props
     if(action.type === "ADD-POST"){
         const newText = {
             id: new Date().getTime(),
-            post: action.postText,
+            post: state.newPostText,
             likeCounter: 0
         }
         state.posts.push(newText);
@@ -40,10 +39,10 @@ export type ActionTypes = ActionDialogsTypes | ActionProfileTypes
 export type ActionProfileTypes = ReturnType<typeof addPostAC> |
                             ReturnType<typeof changeNewTextAC>
 
-export const addPostAC = (postText: string) => {
+export const addPostAC = () => {
     return {
         type: "ADD-POST",
-        postText: postText
+        
     } as const
 }
 

@@ -2,19 +2,22 @@ import React from 'react';
 import s from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import { DialogsType, MessagesType } from '../../redux/store';
+import { DialogsType, MessagesType, DialogsPageType } from '../../redux/store';
 
 type PropsType = {
-    sendMessage: () => void
-    newMessageHeandler: (text: string) => void
-    dialogs: DialogsType[]
-    messages: MessagesType[]
-    newMessageText: string
+    dialogsPage: DialogsPageType;
+    sendMessage: () => void;
+    newMessageHeandler: (text: string) => void;
+    // sendMessage: () => void
+    // newMessageHeandler: (text: string) => void
+    // dialogs: DialogsType[]
+    // messages: MessagesType[]
+    // newMessageText: string
 }
 
 const Dialogs = (props: PropsType) => {
-    let dialodsElements = props.dialogs.map(it => <DialogItem name={it.name} id={it.id} />);
-    let messageElements = props.messages.map(elem => <Message message={elem.message} />);
+    let dialodsElements = props.dialogsPage.dialogs.map(it => <DialogItem name={it.name} id={it.id} />);
+    let messageElements = props.dialogsPage.messages.map(elem => <Message message={elem.message} />);
 
     const sendMessage = () => {
         props.sendMessage()
@@ -37,7 +40,7 @@ const Dialogs = (props: PropsType) => {
                     <textarea placeholder="Enter your message"
                         className={s.textarea}
                         ref={newMessageElem}
-                        value={props.newMessageText}
+                        value={props.dialogsPage.newMessageText}
                         onChange={newMessageHeandler} />
                     <button className={s.button} onClick={sendMessage}>Send</button>
                 </div>
