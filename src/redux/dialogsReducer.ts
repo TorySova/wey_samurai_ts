@@ -34,17 +34,25 @@ const initialState: initialStateType = {
 }
 
 export const dialodsReducer = (state: DialogsPageType = initialState, action: ActionTypes) => {
-    if(action.type === "SEND-MESSAGE"){
+    switch (action.type) {
+    case "SEND-MESSAGE": {
         const newMessage = {
             id: new Date().getTime(),
             message: state.newMessageText
         };
-        state.messages.push(newMessage);
-        state.newMessageText = "";
-    } else if (action.type === "CHANGE-MESSAGE-TEXT"){
-        state.newMessageText = action.newMessage;
+        let stateCopy = {...state};
+        stateCopy.dialogs = [...state.dialogs]
+        stateCopy.messages = [...state.messages]
+        stateCopy.messages.push(newMessage);
+        stateCopy.newMessageText = "";
+        return stateCopy
     }
-    
+    case "CHANGE-MESSAGE-TEXT": {
+        let stateCopy = {...state}
+        stateCopy.newMessageText = action.newMessage;
+        return stateCopy
+    }
+    }
     return state
 }
 export type ActionTypes = ActionDialogsTypes | ActionProfileTypes

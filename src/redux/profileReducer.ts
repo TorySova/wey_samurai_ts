@@ -20,16 +20,24 @@ const initialState: initialStateType = {
 }
 
 export const profileReducer = (state: ProfilePageType = initialState, action: ActionTypes) => {
-    if(action.type === "ADD-POST"){
-        const newText = {
-            id: new Date().getTime(),
-            post: state.newPostText,
-            likeCounter: 0
+    switch (action.type) {
+        case "ADD-POST": {
+            const newText = {
+                id: new Date().getTime(),
+                post: state.newPostText,
+                likeCounter: 0
+            };
+            let stateCopy = { ...state };
+            stateCopy.posts = [...state.posts]
+            stateCopy.posts.push(newText);
+            stateCopy.newPostText = "";
+            return stateCopy;
         }
-        state.posts.push(newText);
-        state.newPostText = "";
-    } else if (action.type === "CHANGE-NEW-TEXT"){
-        state.newPostText = action.newText;
+        case "CHANGE-NEW-TEXT": {
+            let stateCopy = { ...state };
+            stateCopy.newPostText = action.newText;
+            return stateCopy
+        }
     }
 
     return state
@@ -37,12 +45,11 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
 export type ActionTypes = ActionDialogsTypes | ActionProfileTypes
 
 export type ActionProfileTypes = ReturnType<typeof addPostAC> |
-                            ReturnType<typeof changeNewTextAC>
+    ReturnType<typeof changeNewTextAC>
 
 export const addPostAC = () => {
     return {
         type: "ADD-POST",
-        
     } as const
 }
 
