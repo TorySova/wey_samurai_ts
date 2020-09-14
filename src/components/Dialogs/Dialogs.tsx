@@ -16,8 +16,8 @@ type PropsType = {
 }
 
 const Dialogs = (props: PropsType) => {
-    let dialodsElements = props.dialogsPage.dialogs.map(it => <DialogItem name={it.name} id={it.id} />);
-    let messageElements = props.dialogsPage.messages.map(elem => <Message message={elem.message} />);
+    let dialodsElements = props.dialogsPage.dialogs.map(it => <DialogItem key={it.id} name={it.name} id={it.id} />);
+    let messageElements = props.dialogsPage.messages.map(elem => <Message key={elem.id} message={elem.message} />);
 
     const sendMessage = () => {
         props.sendMessage()

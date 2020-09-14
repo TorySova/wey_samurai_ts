@@ -28,8 +28,8 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
                 likeCounter: 0
             };
             let stateCopy = { ...state };
-            stateCopy.posts = [...state.posts]
-            stateCopy.posts.push(newText);
+            stateCopy.posts = [newText, ...state.posts ]
+            // stateCopy.posts.push(newText);
             stateCopy.newPostText = "";
             return stateCopy;
         }

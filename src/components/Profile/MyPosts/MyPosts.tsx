@@ -12,7 +12,7 @@ type MyPostsPropsType = {
 
 const MyPosts = (props: MyPostsPropsType) => {
 
-	let postElements = props.posts.map(it => <Post message={it.post} likeCounter={it.likeCounter} />)
+	let postElements = props.posts.map(it => <Post key={it.id} message={it.post} likeCounter={it.likeCounter} />)
 
 	const addPost = () => {
 		if(props.newPostText.trim() !== ""){
