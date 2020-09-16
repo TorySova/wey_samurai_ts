@@ -1,3 +1,4 @@
+import { initialStateType } from './usersReducer';
 import { ActionTypes } from './dialogsReducer';
 export type MessagesType = {
     message: string
@@ -24,6 +25,8 @@ export type DialogsPageType = {
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage:DialogsPageType
+    usersPage: initialStateType
+
 }
 
 export type StoreType = {

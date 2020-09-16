@@ -1,0 +1,54 @@
+.avatar{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.item{
+display: flex;
+/* align-items: center; */
+padding: 10px;
+}
+
+.button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: rgb(255, 192, 57);
+    color: white;
+    border: 0;
+    outline: none;
+    border: 1px solid black;
+    min-width: 100px;
+    
+  }
+
+.button:hover{
+    border: 1px solid white;
+  }
+
+.block1{
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+}
+
+.block2{
+   
+}
+
+.block3{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/*==========================*/
+.messageBlock{
+  /* border:1px solid blue; */
+  width: 90%;
+  margin: 0 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

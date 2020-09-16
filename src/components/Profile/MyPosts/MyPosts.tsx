@@ -25,7 +25,7 @@ const MyPosts = (props: MyPostsPropsType) => {
 		let text = newPostElem.current ? newPostElem.current.value : ""
 		props.updateNewPostText(text)
 	}
-
+ 
 	return (
 		<div className={s.elem}>
 			<div className={s.block}>
