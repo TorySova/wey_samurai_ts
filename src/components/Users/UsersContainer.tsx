@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../redux/store';
-import { ActionUsersTypes, followAC, unFollowAC } from '../../redux/usersReducer';
+import { ActionUsersTypes, followAC, initialStateType, setUsersAC, unFollowAC } from '../../redux/usersReducer';
 import Users from './Users';
 
 const mapStateToProps = (state: RootStateType) => {
@@ -17,6 +17,9 @@ const mapDispatchToProps = (dispatch: (action: ActionUsersTypes) => void) => {
         },
         unFollow: (usersId: number) => {
             dispatch(unFollowAC(usersId))
+        },
+        setUsers: (users: initialStateType) => {
+            dispatch(setUsersAC(users))
         }
     }
 }

@@ -1,8 +1,11 @@
 export type initialStateType = {
     users: {
         id: number;
-        avatar: string;
-        firstName: string;
+        photos: {
+            small: any
+            lagre: any
+        };
+        name: string;
         status: string;
         location: {
             city: string;
@@ -13,41 +16,7 @@ export type initialStateType = {
 }
 
 const initialState: initialStateType = {
-    users: [
-        {
-            id: 1,
-            avatar: 'https://c7.hotpng.com/preview/118/687/577/emoji-happiness-emoticon-smiley-emoji-thumbnail.jpg',
-            firstName: 'Dima',
-            status: 'Hello Word!',
-            location: {
-                city: 'Kiev',
-                country: 'Ukraine'
-            },
-            isFollow: true
-        },
-        {
-            id: 2,
-            avatar: 'https://c7.hotpng.com/preview/786/839/746/iphone-emoji-sticker-blushing-embarrassment-blushing-emoji.jpg',
-            firstName: 'Nikc',
-            status: 'I am happy',
-            location: {
-                city: 'Moscow',
-                country: 'Russia'
-            },
-            isFollow: false
-        },
-        {
-            id: 3,
-            avatar: 'https://w7.pngwing.com/pngs/838/951/png-transparent-emoji-emoticon-iphone-sticker-smiley-travel-round-face-computer-wallpaper-smiley.png',
-            firstName: 'Pit',
-            status: 'Shit happens',
-            location: {
-                city: 'SPb',
-                country: 'Russia'
-            },
-            isFollow: true
-        },
-    ]
+    users: []
 }
 
 export const userReducer = (state: initialStateType = initialState, action: ActionUsersTypes) => {
