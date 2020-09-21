@@ -1,8 +1,8 @@
-import Axios from 'axios';
 import React from 'react';
+import Axios from 'axios';
 import { initialStateType } from '../../redux/usersReducer';
 import s from './Users.module.css';
-import userPhoto from '../../assets/images/unnamed.png'
+import userPhoto from '../../assets/images/unnamed.png';
 
 type PropsType = {
     usersPage: initialStateType
@@ -11,25 +11,28 @@ type PropsType = {
     setUsers: (users: any) => void
 }
 
-const Users = (props: PropsType) => {
-    if (props.usersPage.users.length === 0) {
-        Axios.get("https://social-network.samuraijs.com/api/1.0/users")
-            .then(response => {
-                props.setUsers(response.data.items)
-            });
+class Users extends React.Component<PropsType> {
+
+    constructor(props:PropsType ) {
+        super(props);
+            Axios.get("https://social-network.samuraijs.com/api/1.0/users")
+                .then(response => {
+                    this.props.setUsers(response.data.items)
+                });
     }
 
-    return <div>
+    render() {
+        return <div>
         {
-            props.usersPage.users.map(u => <div key={u.id} className={s.item}>
+            this.props.usersPage.users.map(u => <div key={u.id} className={s.item}>
                 <div className={s.block1}>
                     <div>
                         <img src={u.photos.small !== null ? u.photos.small : userPhoto} className={s.avatar} />
                     </div>
                     <div>
                         {u.isFollow
-                            ? <button className={s.button} onClick={() => { props.unFollow(u.id) }}>Unfollow</button>
-                            : <button className={s.button} onClick={() => { props.follow(u.id) }}>Follow</button>}
+                            ? <button className={s.button} onClick={() => { this.props.unFollow(u.id) }}>Unfollow</button>
+                            : <button className={s.button} onClick={() => { this.props.follow(u.id) }}>Follow</button>}
                     </div>
                 </div>
                 <div className={s.messageBlock}>
@@ -46,6 +49,7 @@ const Users = (props: PropsType) => {
             </div>)
         }
     </div >
+    }
 }
 
 export default Users;
