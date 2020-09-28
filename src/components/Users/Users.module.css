@@ -56,3 +56,16 @@ padding: 10px;
   justify-content: space-between;
   align-items: flex-end;
 }
+
+.selectedPage{
+  /* font-weight: 500; */
+  color: black;
+  background: rgb(243, 243, 131);
+  border-radius: 5px;
+}
+
+.users{
+  display: flex;
+  flex-wrap: wrap;
+  
+}

@@ -12,11 +12,17 @@ export type initialStateType = {
             country: string;
         };
         isFollow: boolean;
-    }[]
+    }[],
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
 }
 
 const initialState: initialStateType = {
-    users: []
+    users: [],
+    pageSize: 10,
+    totalUsersCount: 0,
+    currentPage: 1
 }
 
 export const userReducer = (state: initialStateType = initialState, action: ActionUsersTypes) => {
@@ -45,7 +51,13 @@ export const userReducer = (state: initialStateType = initialState, action: Acti
             }
         }
         case 'SET-USERS': {
-            return {...state, users: [...state.users, ...action.users]}
+            return {...state, users: action.users}
+        }
+        case 'SET-CURENT-PAGE': {
+            return {...state, currentPage: action.currentPage}
+        }
+        case 'SET-TOTAL-USERS-COUNT': {
+            return {...state, totalUsersCount: action.totalCount}
         }
         default:
             return state;
@@ -53,7 +65,8 @@ export const userReducer = (state: initialStateType = initialState, action: Acti
 }
 
 export type ActionUsersTypes = ReturnType<typeof followAC> |
-    ReturnType<typeof unFollowAC> | ReturnType<typeof setUsersAC>
+    ReturnType<typeof unFollowAC> | ReturnType<typeof setUsersAC>|
+    ReturnType<typeof setCurrentPageAC> | ReturnType<typeof setTotalUsersCountAC>
 
 
 export const followAC = (usersId: number) => {
@@ -72,5 +85,17 @@ export const setUsersAC = (users: any) => {
     return {
         type: 'SET-USERS',
         users
+    } as const
+}
+export const setCurrentPageAC = (currentPage: number) => {
+    return {
+        type: 'SET-CURENT-PAGE',
+        currentPage
+    } as const
+}
+export const setTotalUsersCountAC = (totalCount: number) => {
+    return {
+        type: 'SET-TOTAL-USERS-COUNT',
+        totalCount
     } as const
 }
