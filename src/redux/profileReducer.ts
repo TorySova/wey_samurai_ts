@@ -1,13 +1,15 @@
+import { ProfileType } from './../components/Profile/Profile';
 import { ActionDialogsTypes } from './dialogsReducer';
 import { ProfilePageType } from './store';
 
 type initialStateType = {
     posts: {
-        post: string;
-        id: number;
-        likeCounter: number;
-    }[];
-    newPostText: string;
+        post: string
+        id: number
+        likeCounter: number
+    }[]
+    newPostText: string
+    profile: null
 }
 
 const initialState: initialStateType = {
@@ -17,6 +19,8 @@ const initialState: initialStateType = {
         { post: "Welcome", id: 3, likeCounter: 10 },
     ],
     newPostText: "",
+    profile: null 
+ 
 }
 
 export const profileReducer = (state: ProfilePageType = initialState, action: ActionTypes) => {
@@ -28,7 +32,7 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
                 likeCounter: 0
             };
             let stateCopy = { ...state };
-            stateCopy.posts = [newText, ...state.posts ]
+            stateCopy.posts = [newText, ...state.posts]
             // stateCopy.posts.push(newText);
             stateCopy.newPostText = "";
             return stateCopy;
@@ -38,6 +42,9 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
             stateCopy.newPostText = action.newText;
             return stateCopy
         }
+        case "SET-USER-PROFILE": {
+            return { ...state, profile: action.profile }
+        }
     }
 
     return state
@@ -45,7 +52,7 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
 export type ActionTypes = ActionDialogsTypes | ActionProfileTypes
 
 export type ActionProfileTypes = ReturnType<typeof addPostAC> |
-    ReturnType<typeof changeNewTextAC>
+    ReturnType<typeof changeNewTextAC> | ReturnType<typeof setUserProfile>
 
 export const addPostAC = () => {
     return {
@@ -59,3 +66,10 @@ export const changeNewTextAC = (newText: string) => {
         newText: newText
     } as const
 }
+export const setUserProfile = (profile: ProfileType) => {
+    return {
+        type: "SET-USER-PROFILE",
+        profile
+    } as const
+}
+

@@ -1,3 +1,4 @@
+import { ProfileType } from './../components/Profile/Profile';
 import { initialStateType } from './usersReducer';
 import { ActionTypes } from './dialogsReducer';
 export type MessagesType = {
@@ -16,6 +17,7 @@ export type PostsType = {
 export type ProfilePageType = {
     newPostText: string
     posts: Array<PostsType>
+    profile: null | ProfileType
 }
 export type DialogsPageType = {
     dialogs: Array<DialogsType>

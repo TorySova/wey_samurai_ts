@@ -1,8 +1,8 @@
 import React from 'react';
-import Axios from 'axios';
 import { initialStateType } from '../../redux/usersReducer';
 import s from './Users.module.css';
 import userPhoto from '../../assets/images/unnamed.png';
+import { NavLink } from 'react-router-dom';
 
 type PropsType = {
     totalUsersCount: number
@@ -14,7 +14,7 @@ type PropsType = {
     unFollow: (usersId: number) => void
 }
 
-const Users = (props:PropsType) => {
+const Users = (props: PropsType) => {
 
     const pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
@@ -33,7 +33,9 @@ const Users = (props:PropsType) => {
             props.usersPage.users.map(u => <div key={u.id} className={s.item}>
                 <div className={s.block1}>
                     <div>
-                        <img src={u.photos.small !== null ? u.photos.small : userPhoto} className={s.avatar} />
+                        <NavLink to={'/profile/' + u.id}>
+                            <img src={u.photos.small !== null ? u.photos.small : userPhoto} className={s.avatar} />
+                        </NavLink>
                     </div>
                     <div>
                         {u.isFollow
