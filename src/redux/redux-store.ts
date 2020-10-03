@@ -1,3 +1,4 @@
+import { authReducer } from './authReducer';
 import { userReducer } from './usersReducer';
 import { dialodsReducer } from './dialogsReducer';
 import { profileReducer } from './profileReducer';
@@ -6,7 +7,8 @@ import {createStore, combineReducers} from "redux";
 const redusers = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialodsReducer,
-    usersPage: userReducer
+    usersPage: userReducer,
+    auth: authReducer
 });
 
 export type RootState = ReturnType<typeof redusers>

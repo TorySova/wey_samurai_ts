@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar';
 import Header from './components/Header/Header';
 import News from './components/News/News';
 import Music from './components/Music/Music';
@@ -9,12 +8,13 @@ import Settings from './components/Settings/Settings';
 import ContainerDialogs from './components/Dialogs/ContainerDialogs';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
+import NavbarContainer from './components/Navbar/NavbarContainer';
 
 const App = () => {
   return (
     <BrowserRouter>
       <div className="appWrapper">
-        <Navbar />
+        <NavbarContainer />
         <div className="content">
           <Header />
           <Route path='/profile/:userId?'

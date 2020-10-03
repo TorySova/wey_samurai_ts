@@ -1,8 +1,14 @@
 import React from 'react';
 import s from './Navbar.module.css';
 import { NavLink } from 'react-router-dom';
+import { initialAuthStateType } from '../../redux/authReducer';
 
-const Navbar = () => {
+type PropsType = {
+    isAuth: boolean
+    login: string | null
+}
+
+const Navbar = (props: PropsType) => {
     return (
         <nav className={s.nav}>
             <div className={s.item}>
@@ -22,6 +28,10 @@ const Navbar = () => {
             </div>
             <div className={s.item}>
                 <NavLink to="/users" activeClassName={s.activeLink}> Users </NavLink>
+            </div>
+            <div className={s.login}>
+                {props.isAuth ? props.login : <NavLink to={'/login'}>Login</NavLink>}
+                
             </div>
         </nav>
     )

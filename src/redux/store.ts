@@ -1,3 +1,4 @@
+import { initialAuthStateType } from './authReducer';
 import { ProfileType } from './../components/Profile/Profile';
 import { initialStateType } from './usersReducer';
 import { ActionTypes } from './dialogsReducer';
@@ -28,7 +29,7 @@ export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage:DialogsPageType
     usersPage: initialStateType
-
+    auth: initialAuthStateType
 }
 
 export type StoreType = {
