@@ -1,7 +1,6 @@
 import { initialAuthStateType } from './authReducer';
 import { ProfileType } from './../components/Profile/Profile';
 import { initialStateType } from './usersReducer';
-import { ActionTypes } from './dialogsReducer';
 export type MessagesType = {
     message: string
     id: number
@@ -32,13 +31,13 @@ export type RootStateType = {
     auth: initialAuthStateType
 }
 
-export type StoreType = {
-    _state: RootStateType
-    subscribe: (observer: () => void) => void
-    _renderTree: () => void
-    getState: () => RootStateType
-    dispatch: (action: ActionTypes) => void
-}
+// export type StoreType = {
+//     _state: RootStateType
+//     subscribe: (observer: () => void) => void
+//     _renderTree: () => void
+//     getState: () => RootStateType
+//     dispatch: (action: ActionTypes) => void
+// }
 
 
 
