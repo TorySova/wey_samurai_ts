@@ -28,7 +28,6 @@ class ProfileContainer extends React.Component<PropsType> {
         if(!userId){
             userId = '2'
         }
-        debugger
         Axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+ userId)
         .then(response => {
             this.props.setUserProfile(response.data);
@@ -39,8 +38,7 @@ class ProfileContainer extends React.Component<PropsType> {
         return (
             <Profile profile={this.props.profile} setUserProfile={this.props.setUserProfile}/>
         )
-    }
-	
+    }	
 }
 
 const mapStateToProps = (state: RootStateType) => {
