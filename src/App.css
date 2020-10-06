@@ -4,7 +4,7 @@
   grid-template-areas:
   "n c s";
   grid-template-columns: 3fr 6fr 3fr;
-  background-color: rgb(53, 55, 58);
+  /* background-color: rgb(53, 55, 58); */
   min-height: 100vh;
   height: 100%; 
 }
@@ -13,7 +13,7 @@
   /* grid-area: c; */
   display: grid;
   grid-template-rows: 50px 1fr;
-  color: white;
-  border-right: 1px solid white;
+  /* color: white; */
+  border-right: 1px solid ;
 }
 
