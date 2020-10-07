@@ -1,19 +1,26 @@
-.appWrapper {
-  display: grid;
-  margin: 0 auto;
-  grid-template-areas:
-  "n c s";
-  grid-template-columns: 3fr 6fr 3fr;
-  /* background-color: rgb(53, 55, 58); */
+.container {
   min-height: 100vh;
-  height: 100%; 
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.content {
-  /* grid-area: c; */
-  display: grid;
-  grid-template-rows: 50px 1fr;
-  /* color: white; */
-  border-right: 1px solid ;
+.navbarContainer{
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  background: rgb(206, 206, 206);
+  display: flex;
+  min-height: 100%;
+  width: 20%;
+  margin: 0px 10px;
 }
 
+.content{
+  min-height: 100vh;
+  margin: 0px 10px;
+  background: rgb(248, 200, 137);
+  display: flex;
+  width: 75%;
+}

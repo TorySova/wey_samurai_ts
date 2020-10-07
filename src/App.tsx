@@ -13,10 +13,12 @@ import NavbarContainer from './components/Navbar/NavbarContainer';
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="appWrapper">
-        <NavbarContainer />
+      <div className="container">
+        <div className="navbarContainer">
+          <NavbarContainer />
+        </div>
         <div className="content">
-          <Header />
+          {/* <Header /> */}
           <Route path='/profile/:userId?'
             render={() => <ProfileContainer />} />
           <Route path='/dialogs'

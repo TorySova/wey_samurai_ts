@@ -1,5 +1,6 @@
 import React from 'react';
 import Info from './Info/Info';
+import s from './Profile.module.css'
 import ContainerMyPosts from './MyPosts/ContainerMyPosts';
 
 export type ProfileType = {
@@ -35,9 +36,13 @@ type PropsType = {
 
 const Profile = (props:PropsType) => {
 	return (
-		<div>
-			<Info profile={props.profile}/>
-			<ContainerMyPosts />
+		<div className={s.profile}>
+            <div className={s.info}>
+                <Info profile={props.profile}/>
+            </div>
+			<div className={s.myPosts}>
+			    <ContainerMyPosts />
+            </div>
 		</div> 
 	)
 }
