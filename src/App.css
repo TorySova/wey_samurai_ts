@@ -1,26 +1,43 @@
 .container {
   min-height: 100vh;
-  width: 80%;
+  max-width: 1000px;
   margin: 0 auto;
   display: flex;
-  flex-wrap: wrap;
 }
 
 .navbarContainer{
   position: sticky;
   top: 0;
   max-height: 100vh;
-  background: rgb(206, 206, 206);
+  background: #6A9A8B;
   display: flex;
   min-height: 100%;
-  width: 20%;
-  margin: 0px 10px;
+  width: 25%;
+  /* margin: 0px 10px; */
 }
 
 .content{
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   margin: 0px 10px;
-  background: rgb(248, 200, 137);
+  background: #6A9A8B;
   display: flex;
-  width: 75%;
+  width: 70%;
 }
+
+@media (max-widht: 800px){
+  .container{
+    
+  }
+  .navbarContainer{
+   
+  }
+  .content{
+   
+  }
+}
+
+
+
+

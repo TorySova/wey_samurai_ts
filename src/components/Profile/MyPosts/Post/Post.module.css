@@ -1,10 +1,5 @@
-
-  .item {
-    
-  }
-
-  /* .item img {
+.item img {
+  margin-top: 10px;
     width: 60px;
-    border: 1px solid black;
     border-radius: 50%;
-  } */
+  }

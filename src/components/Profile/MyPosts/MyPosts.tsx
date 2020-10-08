@@ -15,8 +15,8 @@ const MyPosts = (props: MyPostsPropsType) => {
 	let postElements = props.posts.map(it => <Post key={it.id} message={it.post} likeCounter={it.likeCounter} />)
 
 	const addPost = () => {
-		if(props.newPostText.trim() !== ""){
-		props.addPost()
+		if (props.newPostText.trim() !== "") {
+			props.addPost()
 		}
 	}
 
@@ -25,20 +25,23 @@ const MyPosts = (props: MyPostsPropsType) => {
 		let text = newPostElem.current ? newPostElem.current.value : ""
 		props.updateNewPostText(text)
 	}
- 
+
 	return (
-		<div className={s.elem}>
-			<div className={s.block}>
-				What's new?
-				<div>
-					<textarea placeholder="Enter your message"
+		<div className={s.myPostBlock}>
+			<div className={s.contentBlock}>
+				<div className={s.inputBlock}>
+					<textarea placeholder="What's new?"
 						className={s.textarea}
 						maxLength={124}
 						value={props.newPostText}
 						onChange={newTextHeandler}
 						ref={newPostElem} />
-					<button className={s.button} onClick={addPost} >Add post</button>
+					<div className={s.buttonBlock}>
+						<button className={s.button} onClick={addPost} >Add post</button>
+					</div>
+
 				</div>
+
 				<div className={s.posts}>
 					{postElements}
 				</div>

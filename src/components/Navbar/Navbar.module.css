@@ -6,27 +6,33 @@
   width: 100%;
   }
 
+/* @media (max-widht: 800px){
+  .nav{
+    flex-direction: row;
+  }
+} */
+
   .item {
     margin-top: 30px;
   }
   .item a {
-    color: black;
+    color: white;
     text-decoration: none;
     transition: all 0.5s ease;
   }
 
   .item a.activeLink {
-    padding: 10px 26px;
+    padding: 7px 10px;
     border-radius: 30px;
-    background: rgb(255, 192, 57);
-    color: white; 
+    background: #C8FCEA;
+    color: black; 
   }
 
   .item a:hover{
-    padding: 10px 26px;
+    padding: 7px 10px;
     border-radius: 30px;
-    background: rgb(235, 182, 67);
-    color: white;
+    background: #C8FCEA;
+    color: black;
     opacity: 0.8;
   }
 .login{

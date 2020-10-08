@@ -30,20 +30,27 @@ const Dialogs = (props: PropsType) => {
     }
 
     return (
-        <div className={s.dialogs}>
-            <div className={s.dialogsItem}>
-                {dialodsElements}
+        <div className={s.dialogsBlock}>
+            <div className={s.dialogsName}>
+                <div className={s.name}>
+                    {dialodsElements}
+                </div>
             </div>
-            <div className={s.messagesItem}>
-                {messageElements}
-                <div>
+            <div className={s.messages}>
+                <div className={s.messagesItem}>
+                    {messageElements}
+                </div>
+                <div className={s.inputMessage}>
                     <textarea placeholder="Enter your message"
                         className={s.textarea}
                         ref={newMessageElem}
                         value={props.dialogsPage.newMessageText}
                         onChange={newMessageHeandler} />
-                    <button className={s.button} onClick={sendMessage}>Send</button>
+                    <div className={s.button}>
+                        <img src={'https://www.searchpng.com/wp-content/uploads/2019/02/Send-Icon-PNG-1-715x657.png'} className={s.buttonImg} onClick={sendMessage} />
+                    </div>
                 </div>
+
             </div>
 
         </div>

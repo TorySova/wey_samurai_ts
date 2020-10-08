@@ -1,48 +1,40 @@
-/* .block {
-  margin: 10px;
-  
-} */
-
-/* .elem {
-  margin: 200px 500px 50px 0px;
+.myPostBlock {
   width: 100%;
-  border-top: 1px solid ;
-} */
+  height: 100vh;
+  display: flex;
+  /* border: 1px solid ; */
+}
+.contentBlock{
+  margin-left: 20px;
+  /* border: 1px solid ; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.inputBlock{
+  display: flex;
+  flex-direction: column;
+  width: 96%;
+}
 
-/* .textarea {
-  display: block;
-  padding-bottom: 5px;
-  margin: 5px;
+.textarea {
+  margin-top: 20px;
   outline: none;
-  width: 94%;
   resize: none;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 20px;
-  color: black;
   border: 0;
-  background: rgb(226, 226, 226);
-  border: 3px solid rgb(255, 255, 255);
-} */
+  border-bottom: 1px solid;
+  font-size: 17px;
+}
 
-/* .textarea:hover{ 
-  border: 3px solid rgb(255, 192, 57);
-} */
-
-/* .button {
-  margin: 5px;
-  padding: 10px 20px;
-  border-radius: 30px;
-  background: rgb(255, 192, 57);
-  color: white;
-  border: 0;
+.button {
+  margin-top: 10px;
   outline: none;
-  border: 1px solid black;
-} */
-
-/* .button:hover{
-  border: 1px solid white;
-} */
+  width: 80px; 
+  padding: 7px 7px;
+  border-radius: 30px;
+  background: rgb(255, 255, 255);
+  border: 0;  
+}
 
 
 

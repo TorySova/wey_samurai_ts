@@ -9,7 +9,7 @@ type PostPropsType = {
 const Post = (props: PostPropsType) => {
 	return <div className={s.posts}>
 		<div className={s.item}>
-			{/* <img src="https://image.freepik.com/free-photo/_23-2147890098.jpg" /> */}
+			<img src="https://image.freepik.com/free-photo/_23-2147890098.jpg" />
 			{props.message}
 		</div>
 		<div>
