@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a2ae2d70e66751884540067d08ee71ea",
+    "revision": "be1ca0c58439336deea75216d50f2d55",
     "url": "/wey_samurai_ts/index.html"
   },
   {
-    "revision": "8539ab8d66bb4dcfda55",
-    "url": "/wey_samurai_ts/static/css/main.37edb323.chunk.css"
+    "revision": "49ea998b0014781ebd5e",
+    "url": "/wey_samurai_ts/static/css/main.ef5fe266.chunk.css"
   },
   {
     "revision": "45f51ce712764c704895",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/wey_samurai_ts/static/js/2.1397fdf1.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "8539ab8d66bb4dcfda55",
+    "revision": "49ea998b0014781ebd5e",
     "url": "/wey_samurai_ts/static/js/main.faa76296.chunk.js"
   },
   {
