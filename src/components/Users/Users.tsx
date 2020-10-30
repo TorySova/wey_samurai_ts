@@ -15,6 +15,7 @@ type PropsType = {
     unFollow: (usersId: number) => void
     followingInProgress: Array<any>
     toggleIsFollowingProgress: (isFetching: boolean, userId: number) => void
+    
 }
 
 const Users = (props: PropsType) => {

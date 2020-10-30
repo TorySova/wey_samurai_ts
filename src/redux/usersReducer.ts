@@ -1,3 +1,4 @@
+import { usersAPI } from './../api/api';
 export type initialStateType = {
     users: {
         id: number;
@@ -26,18 +27,18 @@ const initialState: initialStateType = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,
-    followingInProgress: [] 
+    followingInProgress: []
 }
 
 export const userReducer = (state: initialStateType = initialState, action: ActionUsersTypes) => {
-       
+
     switch (action.type) {
         case 'FOLLOW': {
             return {
                 ...state,
-                users: state.users.map( u => {
-                    if(u.id === action.usersId){
-                        return {...u, isFollow: true}
+                users: state.users.map(u => {
+                    if (u.id === action.usersId) {
+                        return { ...u, isFollow: true }
                     }
                     return u
                 })
@@ -46,31 +47,31 @@ export const userReducer = (state: initialStateType = initialState, action: Acti
         case 'UNFOLLOW': {
             return {
                 ...state,
-                users: state.users.map( u => {
-                    if(u.id === action.usersId){
-                        return {...u, isFollow: false}
+                users: state.users.map(u => {
+                    if (u.id === action.usersId) {
+                        return { ...u, isFollow: false }
                     }
                     return u
                 })
             }
         }
         case 'SET-USERS': {
-            return {...state, users: action.users}
+            return { ...state, users: action.users }
         }
         case 'SET-CURENT-PAGE': {
-            return {...state, currentPage: action.currentPage}
+            return { ...state, currentPage: action.currentPage }
         }
         case 'SET-TOTAL-USERS-COUNT': {
-            return {...state, totalUsersCount: action.totalCount}
+            return { ...state, totalUsersCount: action.totalCount }
         }
         case 'TOGGLE-IS-FETCHING': {
-            return {...state, isFetching: action.isFetching}
+            return { ...state, isFetching: action.isFetching }
         }
         case 'TOGGLE-IS-FOLLOWING-PROGRESS': {
             return {
                 ...state,
                 followingInProgress: action.isFetching
-                    ?  [...state.followingInProgress, action.usersId]
+                    ? [...state.followingInProgress, action.usersId]
                     : state.followingInProgress.filter(id => id !== action.usersId)
             }
         }
@@ -80,7 +81,7 @@ export const userReducer = (state: initialStateType = initialState, action: Acti
 }
 
 export type ActionUsersTypes = ReturnType<typeof follow> |
-    ReturnType<typeof unFollow> | ReturnType<typeof setUsers>|
+    ReturnType<typeof unFollow> | ReturnType<typeof setUsers> |
     ReturnType<typeof setCurrentPage> | ReturnType<typeof setTotalUsersCount> |
     ReturnType<typeof toggleIsFetching> | ReturnType<typeof toggleIsFollowingProgress>
 
@@ -128,3 +129,29 @@ export const toggleIsFollowingProgress = (isFetching: boolean, usersId: number) 
         usersId
     } as const
 }
+
+
+export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
+    return (dispatch: any) => {
+        dispatch(toggleIsFetching(true));
+
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(toggleIsFetching(false))
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsersCount(data.totalCount));
+        });
+    }
+}
+
+// export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
+//     return (dispatch: any) => {
+//         dispatch(toggleIsFetching(true))
+//         dispatch(setCurrentPage(currentPage));
+//         usersAPI.getUsers(currentPage, pageSize).then(response => {
+//                 dispatch(setUsers(response.data))
+//                 dispatch(setTotalUsersCount(response.data.totalCount))
+//                 dispatch(toggleIsFetching(false))
+//             }
+//         )
+//     }
+// }
