@@ -1,3 +1,4 @@
+import { usersAPI } from './../api/api';
 import { ProfileType } from './../components/Profile/Profile';
 import { ActionDialogsTypes } from './dialogsReducer';
 import { ProfilePageType } from './store';
@@ -71,5 +72,14 @@ export const setUserProfile = (profile: ProfileType) => {
         type: "SET-USER-PROFILE",
         profile
     } as const
+}
+
+export const userProfile = (userId: string) => {
+    return (dispatch: any) => {
+        usersAPI.userID(userId)
+        .then(response => {
+            dispatch(setUserProfile(response.data));
+        });
+    }
 }
 

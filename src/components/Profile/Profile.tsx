@@ -31,7 +31,6 @@ type PhotosType = {
 
 type PropsType = {
     profile: null | ProfileType
-    setUserProfile: (profile: ProfileType) => void
 }
 
 const Profile = (props:PropsType) => {
