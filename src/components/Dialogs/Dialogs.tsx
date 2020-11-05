@@ -3,11 +3,13 @@ import s from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import { DialogsType, MessagesType, DialogsPageType } from '../../redux/store';
+import { Redirect } from 'react-router-dom';
 
 type PropsType = {
     dialogsPage: DialogsPageType;
     sendMessage: () => void;
     newMessageHeandler: (text: string) => void;
+    auth: boolean
     // sendMessage: () => void
     // newMessageHeandler: (text: string) => void
     // dialogs: DialogsType[]
@@ -27,6 +29,10 @@ const Dialogs = (props: PropsType) => {
     let newMessageHeandler = () => {
         let text = newMessageElem.current ? newMessageElem.current.value : ""
         props.newMessageHeandler(text)
+    }
+
+    if(!props.auth){
+        return <Redirect to={'/login'}/>
     }
 
     return (
