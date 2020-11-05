@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/wey_samurai_ts/static/css/main.ef5fe266.chunk.css",
-    "main.js": "/wey_samurai_ts/static/js/main.faa76296.chunk.js",
-    "main.js.map": "/wey_samurai_ts/static/js/main.faa76296.chunk.js.map",
+    "main.js": "/wey_samurai_ts/static/js/main.fa0a8b50.chunk.js",
+    "main.js.map": "/wey_samurai_ts/static/js/main.fa0a8b50.chunk.js.map",
     "runtime-main.js": "/wey_samurai_ts/static/js/runtime-main.59bf36b3.js",
     "runtime-main.js.map": "/wey_samurai_ts/static/js/runtime-main.59bf36b3.js.map",
-    "static/js/2.1397fdf1.chunk.js": "/wey_samurai_ts/static/js/2.1397fdf1.chunk.js",
-    "static/js/2.1397fdf1.chunk.js.map": "/wey_samurai_ts/static/js/2.1397fdf1.chunk.js.map",
+    "static/js/2.6f9746ee.chunk.js": "/wey_samurai_ts/static/js/2.6f9746ee.chunk.js",
+    "static/js/2.6f9746ee.chunk.js.map": "/wey_samurai_ts/static/js/2.6f9746ee.chunk.js.map",
     "index.html": "/wey_samurai_ts/index.html",
-    "precache-manifest.e4163bbea8021c8b278fe7ae85319f1a.js": "/wey_samurai_ts/precache-manifest.e4163bbea8021c8b278fe7ae85319f1a.js",
+    "precache-manifest.39a8049acc4f312a0f1e4de57dc1c18f.js": "/wey_samurai_ts/precache-manifest.39a8049acc4f312a0f1e4de57dc1c18f.js",
     "service-worker.js": "/wey_samurai_ts/service-worker.js",
     "static/css/main.ef5fe266.chunk.css.map": "/wey_samurai_ts/static/css/main.ef5fe266.chunk.css.map",
-    "static/js/2.1397fdf1.chunk.js.LICENSE.txt": "/wey_samurai_ts/static/js/2.1397fdf1.chunk.js.LICENSE.txt",
+    "static/js/2.6f9746ee.chunk.js.LICENSE.txt": "/wey_samurai_ts/static/js/2.6f9746ee.chunk.js.LICENSE.txt",
     "static/media/preloader.svg": "/wey_samurai_ts/static/media/preloader.57cdddfd.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.59bf36b3.js",
-    "static/js/2.1397fdf1.chunk.js",
+    "static/js/2.6f9746ee.chunk.js",
     "static/css/main.ef5fe266.chunk.css",
-    "static/js/main.faa76296.chunk.js"
+    "static/js/main.fa0a8b50.chunk.js"
   ]
 }
