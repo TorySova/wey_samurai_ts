@@ -13,26 +13,24 @@ type PropsType = {
     usersPage: initialStateType
     acceptFollow: (usersId: number) => void
     acceptUnFollow: (usersId: number) => void
-    followingInProgress: Array<any>
-    
-    
+    followingInProgress: Array<any>  
 }
 
 const Users = (props: PropsType) => {
-
+    
     const pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pageCount; i++) {
         pages.push(i)
     }
-
     return <div>
         <div className={s.users}>
-            {pages.map(p => {
-                return <span className={props.currentPage === p ? s.selectedPage : ''}
-                    onClick={() => { props.onPageChanget(p) }}>{p}</span>
-            })}
+            {pages.map((p, index) => {             
+                return <span key={index}className={props.currentPage === p? s.selectedPage : ''} 
+                onClick={() => { props.onPageChanget(p) }}>{p}</span>       
+            })}        
         </div>
+        
         {
             props.usersPage.users.map(u => <div key={u.id} className={s.item}>
                 <div className={s.block1}>
@@ -65,6 +63,7 @@ const Users = (props: PropsType) => {
             </div>)
         }
     </div >
+  
 }
 
 export default Users;

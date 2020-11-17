@@ -34,11 +34,13 @@ class UsersContainer extends React.Component<PropsType> {
     }
 
     onPageChanget = (pagesNamber: number) => {
+        
         this.props.getUsers(pagesNamber, this.props.pageSize)
 
     }
 
     render() {
+        debugger
         return <>
             {this.props.isFetching ? <div className={s.preloader}>
                 <Preloader />
@@ -58,6 +60,7 @@ class UsersContainer extends React.Component<PropsType> {
 }
 
 const mapStateToProps = (state: RootStateType) => {
+    debugger
     return {
         usersPage: state.usersPage,
         pageSize: state.usersPage.pageSize,

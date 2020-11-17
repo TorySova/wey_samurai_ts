@@ -30,8 +30,8 @@ const initialState: initialStateType = {
     followingInProgress: []
 }
 
-export const userReducer = (state: initialStateType = initialState, action: ActionUsersTypes) => {
-
+export const userReducer = (state: initialStateType = initialState, action: ActionUsersTypes):initialStateType => {
+    debugger
     switch (action.type) {
         case 'FOLLOW': {
             return {
@@ -59,9 +59,14 @@ export const userReducer = (state: initialStateType = initialState, action: Acti
             return { ...state, users: action.users }
         }
         case 'SET-CURENT-PAGE': {
-            return { ...state, currentPage: action.currentPage }
+            debugger
+            let copyState = {...state}
+            copyState.currentPage = action.currentPage
+            return {...copyState}
+            
         }
         case 'SET-TOTAL-USERS-COUNT': {
+        
             return { ...state, totalUsersCount: action.totalCount }
         }
         case 'TOGGLE-IS-FETCHING': {
@@ -104,7 +109,12 @@ export const setUsers = (users: any) => {
         users
     } as const
 }
-export const setCurrentPage = (currentPage: number) => {
+type SetCurrentActionType = {
+    type: 'SET-CURENT-PAGE'
+    currentPage:number
+}
+export const setCurrentPage = (currentPage: number):SetCurrentActionType => {
+    
     return {
         type: 'SET-CURENT-PAGE',
         currentPage
@@ -131,13 +141,14 @@ export const toggleIsFollowingProgress = (isFetching: boolean, usersId: number) 
 }
 
 
-export const getUsers = (currentPage: number, pageSize: number) => {
-    return (dispatch: any) => {
-        dispatch(toggleIsFetching(true));
 
+export const getUsers = (currentPage: number, pageSize: number) => {
+    return (dispatch: any) => {       
+        dispatch(toggleIsFetching(true));
         usersAPI.getUsers(currentPage, pageSize).then(data => {
             dispatch(toggleIsFetching(false))
             dispatch(setUsers(data.items));
+            dispatch(setCurrentPage(currentPage))
             dispatch(setTotalUsersCount(data.totalCount));
         });
     }
