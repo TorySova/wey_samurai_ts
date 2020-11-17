@@ -7,6 +7,8 @@ import { ActionUsersTypes, acceptFollow, initialStateType, setCurrentPage, setUs
 import s from './Users.module.css'
 import Preloader from '../common/preloader/Preloader';
 import Users from './Users';
+import { withAuthRedirect } from '../../hoc/WithAuthRedirect';
+import { compose } from 'redux';
 
 
 type PropsType = {
@@ -66,8 +68,7 @@ const mapStateToProps = (state: RootStateType) => {
     }
 }
 
-
-export default connect(mapStateToProps,
-    { acceptFollow, acceptUnFollow, setUsers,
-        setCurrentPage, setTotalUsersCount,
-        toggleIsFetching, toggleIsFollowingProgress, getUsers })(UsersContainer);
+export default compose(
+    withAuthRedirect,
+    connect(mapStateToProps,{ acceptFollow, acceptUnFollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleIsFollowingProgress, getUsers })
+)(UsersContainer);

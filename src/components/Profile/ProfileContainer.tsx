@@ -1,14 +1,11 @@
-import Axios from 'axios';
 import React from 'react';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../redux/store';
 import Profile, { ProfileType } from './Profile';
-import {userProfile} from '../../redux/profileReducer'
-import { Redirect, RouteComponentProps, withRouter } from 'react-router';
-
-type PathParamsType = {
-    userId: string
-}
+import { userProfile } from '../../redux/profileReducer'
+import { RouteComponentProps, withRouter } from 'react-router';
+import { withAuthRedirect } from '../../hoc/WithAuthRedirect';
+import { compose } from 'redux';
 
 type mapDispatchToPropsType = {
     userProfile: (userId: string) => void
@@ -16,43 +13,34 @@ type mapDispatchToPropsType = {
 
 type mapStateToPropsType = {
     profile: null | ProfileType
-    auth: boolean
+    // auth: boolean
 }
 
 type OwnPropsType = mapDispatchToPropsType & mapStateToPropsType
-type PropsType = RouteComponentProps<PathParamsType> & OwnPropsType
+export type ProfilePropsType = RouteComponentProps<{ userId: string }> & OwnPropsType
 
-class ProfileContainer extends React.Component<PropsType> { 
-
+class ProfileContainer extends React.Component<ProfilePropsType> {
     componentDidMount() {
         let userId = this.props.match.params.userId;
-        if(!userId){
+        if (!userId) {
             userId = '2'
         }
         this.props.userProfile(userId)
-        // Axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+ userId)
-        // .then(response => {
-        //     this.props.setUserProfile(response.data);
-        // });
     }
-
-    render(){
-        if(!this.props.auth){
-            return <Redirect to={'/login'}/>
-        }
+    render() {
         return (
             <Profile profile={this.props.profile} />
         )
-    }	
-}
-
-const mapStateToProps = (state: RootStateType) => {
-    return{
-        profile: state.profilePage.profile,
-        auth: state.auth.isAuth
     }
 }
 
-let withUrlDataContainerComponent = withRouter(ProfileContainer)
+const mapStateToProps = (state: RootStateType): mapStateToPropsType => ({
+    profile: state.profilePage.profile,
+    // auth: state.auth.isAuth
+})
 
-export default connect(mapStateToProps, { userProfile}) (withUrlDataContainerComponent);
+export default compose(
+    withAuthRedirect,
+    withRouter,
+    connect(mapStateToProps, { userProfile })
+)(ProfileContainer)

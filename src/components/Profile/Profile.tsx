@@ -29,7 +29,7 @@ type PhotosType = {
     large: string | null
 }
 
-type PropsType = {
+export type PropsType = {
     profile: null | ProfileType
 }
 

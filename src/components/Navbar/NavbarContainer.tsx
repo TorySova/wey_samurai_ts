@@ -13,14 +13,6 @@ type PropsType = {
 class NavbarContainer extends React.Component<PropsType> {
     componentDidMount() {
         this.props.userLogin()
-        // Axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-        //     withCredentials: true
-        // })
-        //     .then(response => {
-        //         if (response.data.resultCode === 0) {
-        //             this.props.setAuthUserData(response.data.data)
-        //         }
-        //     });
     }
     render() {
         return (

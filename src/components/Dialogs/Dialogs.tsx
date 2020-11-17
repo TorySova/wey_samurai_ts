@@ -2,10 +2,10 @@ import React from 'react';
 import s from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import { DialogsType, MessagesType, DialogsPageType } from '../../redux/store';
+import { DialogsPageType } from '../../redux/store';
 import { Redirect } from 'react-router-dom';
 
-type PropsType = {
+export type DialogsPropsType = {
     dialogsPage: DialogsPageType;
     sendMessage: () => void;
     newMessageHeandler: (text: string) => void;
@@ -17,7 +17,7 @@ type PropsType = {
     // newMessageText: string
 }
 
-const Dialogs = (props: PropsType) => {
+const Dialogs = (props: DialogsPropsType) => {
     let dialodsElements = props.dialogsPage.dialogs.map(it => <DialogItem key={it.id} name={it.name} id={it.id} />);
     let messageElements = props.dialogsPage.messages.map(elem => <Message key={elem.id} message={elem.message} />);
 
@@ -31,9 +31,9 @@ const Dialogs = (props: PropsType) => {
         props.newMessageHeandler(text)
     }
 
-    if(!props.auth){
-        return <Redirect to={'/login'}/>
-    }
+    // if(!props.auth){
+    //     return <Redirect to={'/login'}/>
+    // }
 
     return (
         <div className={s.dialogsBlock}>
