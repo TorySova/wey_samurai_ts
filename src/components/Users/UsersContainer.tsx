@@ -1,9 +1,13 @@
-import Axios from 'axios';
 import React from 'react';
 import { connect } from 'react-redux';
-import { usersAPI } from '../../api/api';
 import { RootStateType } from '../../redux/store';
-import { ActionUsersTypes, acceptFollow, initialStateType, setCurrentPage, setUsers, acceptUnFollow, setTotalUsersCount, toggleIsFetching, toggleIsFollowingProgress, getUsers } from '../../redux/usersReducer';
+import {
+    acceptFollow, initialStateType,
+    setCurrentPage, setUsers,
+    acceptUnFollow, setTotalUsersCount,
+    toggleIsFetching, toggleIsFollowingProgress,
+    getUsers
+} from '../../redux/usersReducer';
 import s from './Users.module.css'
 import Preloader from '../common/preloader/Preloader';
 import Users from './Users';
@@ -25,7 +29,7 @@ type PropsType = {
     toggleIsFetching: (isFetching: boolean) => void
     toggleIsFollowingProgress: (isFetching: boolean, userId: number) => void
     followingInProgress: Array<any>
-    getUsers: (currentPage: number, pageSize: number) =>  void
+    getUsers: (currentPage: number, pageSize: number) => void
 }
 
 class UsersContainer extends React.Component<PropsType> {
@@ -34,13 +38,12 @@ class UsersContainer extends React.Component<PropsType> {
     }
 
     onPageChanget = (pagesNamber: number) => {
-        
+
         this.props.getUsers(pagesNamber, this.props.pageSize)
 
     }
 
     render() {
-        debugger
         return <>
             {this.props.isFetching ? <div className={s.preloader}>
                 <Preloader />
@@ -53,14 +56,13 @@ class UsersContainer extends React.Component<PropsType> {
                 acceptFollow={this.props.acceptFollow}
                 acceptUnFollow={this.props.acceptUnFollow}
                 followingInProgress={this.props.followingInProgress}
-                 />
+            />
         </>
     }
 
 }
 
 const mapStateToProps = (state: RootStateType) => {
-    debugger
     return {
         usersPage: state.usersPage,
         pageSize: state.usersPage.pageSize,
@@ -73,5 +75,5 @@ const mapStateToProps = (state: RootStateType) => {
 
 export default compose(
     withAuthRedirect,
-    connect(mapStateToProps,{ acceptFollow, acceptUnFollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleIsFollowingProgress, getUsers })
+    connect(mapStateToProps, { acceptFollow, acceptUnFollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleIsFollowingProgress, getUsers })
 )(UsersContainer);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { KeyboardEvent } from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 import { PostsType } from '../../../redux/store';
@@ -19,6 +19,11 @@ const MyPosts = (props: MyPostsPropsType) => {
 			props.addPost()
 		}
 	}
+	// const onKeyPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+	// 	if (e.key === "Enter") {
+	// 		props.addPost()
+	// 	}
+	// };
 
 	let newPostElem = React.createRef<HTMLTextAreaElement>();
 	let newTextHeandler = () => {
@@ -33,6 +38,7 @@ const MyPosts = (props: MyPostsPropsType) => {
 					<textarea placeholder="What's new?"
 						className={s.textarea}
 						maxLength={124}
+						// onKeyPress={onKeyPressHandler}
 						value={props.newPostText}
 						onChange={newTextHeandler}
 						ref={newPostElem} />

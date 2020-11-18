@@ -16,8 +16,7 @@ type PropsType = {
     followingInProgress: Array<any>  
 }
 
-const Users = (props: PropsType) => {
-    
+const Users = (props: PropsType) => {   
     const pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pageCount; i++) {
@@ -29,8 +28,7 @@ const Users = (props: PropsType) => {
                 return <span key={index}className={props.currentPage === p? s.selectedPage : ''} 
                 onClick={() => { props.onPageChanget(p) }}>{p}</span>       
             })}        
-        </div>
-        
+        </div>      
         {
             props.usersPage.users.map(u => <div key={u.id} className={s.item}>
                 <div className={s.block1}>

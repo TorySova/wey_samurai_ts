@@ -31,13 +31,15 @@ type PhotosType = {
 
 export type PropsType = {
     profile: null | ProfileType
+    status: string
+    updateUserStatus: (status: string) => void
 }
 
 const Profile = (props:PropsType) => {
 	return (
 		<div className={s.profile}>
             <div className={s.info}>
-                <Info profile={props.profile}/>
+                <Info profile={props.profile} status={props.status} updateUserStatus={props.updateUserStatus}/>
             </div>
 			<div className={s.myPosts}>
 			    <ContainerMyPosts />

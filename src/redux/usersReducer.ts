@@ -31,7 +31,6 @@ const initialState: initialStateType = {
 }
 
 export const userReducer = (state: initialStateType = initialState, action: ActionUsersTypes):initialStateType => {
-    debugger
     switch (action.type) {
         case 'FOLLOW': {
             return {
@@ -59,11 +58,7 @@ export const userReducer = (state: initialStateType = initialState, action: Acti
             return { ...state, users: action.users }
         }
         case 'SET-CURENT-PAGE': {
-            debugger
-            let copyState = {...state}
-            copyState.currentPage = action.currentPage
-            return {...copyState}
-            
+            return {...state, currentPage: action.currentPage}           
         }
         case 'SET-TOTAL-USERS-COUNT': {
         
