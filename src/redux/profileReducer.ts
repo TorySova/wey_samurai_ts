@@ -22,7 +22,7 @@ const initialState: initialStateType = {
     ],
     newPostText: "",
     profile: null,
-    status: "hello people!"
+    status: "Торжественно клянусь, что замышляю только шалость ⚡"
 }
 
 export const profileReducer = (state: ProfilePageType = initialState, action: ActionTypes) => {

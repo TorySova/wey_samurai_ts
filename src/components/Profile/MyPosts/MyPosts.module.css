@@ -32,9 +32,14 @@
   width: 80px; 
   padding: 7px 7px;
   border-radius: 30px;
-  background: rgb(255, 255, 255);
+  color: white;
+  background: rgba(63, 124, 255, 0.884);
   border: 0;  
 }
+
+/* .posts{
+  border: 1px solid;
+} */
 
 
 

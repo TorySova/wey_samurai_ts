@@ -64,8 +64,8 @@ padding: 10px;
 
 .selectedPage{
   /* font-weight: 500; */
-  color: black;
-  background: rgb(243, 243, 131);
+  color: rgb(253, 253, 253);
+  background: rgba(63, 124, 255, 0.884);
   border-radius: 5px;
 }
 

@@ -5,7 +5,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: #6A9A8B;
-    color: white;
-    border-bottom: 10px solid white;
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    border-bottom: 1px solid rgb(223, 223, 223);
   }
