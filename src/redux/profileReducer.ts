@@ -9,7 +9,6 @@ type initialStateType = {
         id: number
         likeCounter: number
     }[]
-    newPostText: string
     profile: null
     status: string
 }
@@ -20,7 +19,6 @@ const initialState: initialStateType = {
         { post: "Today I'm happy", id: 2, likeCounter: 18 },
         { post: "Welcome", id: 3, likeCounter: 10 },
     ],
-    newPostText: "",
     profile: null,
     status: "---"
 }
@@ -28,21 +26,10 @@ const initialState: initialStateType = {
 export const profileReducer = (state: ProfilePageType = initialState, action: ActionTypes) => {
     switch (action.type) {
         case "ADD-POST": {
-            const newText = {
-                id: new Date().getTime(),
-                post: state.newPostText,
-                likeCounter: 0
-            };
-            let stateCopy = { ...state };
-            stateCopy.posts = [newText, ...state.posts]
-            // stateCopy.posts.push(newText);
-            stateCopy.newPostText = "";
-            return stateCopy;
-        }
-        case "CHANGE-NEW-TEXT": {
-            let stateCopy = { ...state };
-            stateCopy.newPostText = action.newText;
-            return stateCopy
+            return {
+                ...state,
+                posts: [ {id: new Date().getTime(), post: action.newPostText, likeCounter:0}, ...state.posts]
+            }
         }
         case "SET-USER-PROFILE": {
             return { ...state, profile: action.profile }
@@ -60,18 +47,12 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
 export type ActionTypes = ActionDialogsTypes | ActionProfileTypes
 
 export type ActionProfileTypes = ReturnType<typeof addPostAC> |
-    ReturnType<typeof changeNewTextAC> | ReturnType<typeof setUserProfile> | ReturnType<typeof setStatus>
+     ReturnType<typeof setUserProfile> | ReturnType<typeof setStatus>
 
-export const addPostAC = () => {
+export const addPostAC = (newPostText: string) => {
     return {
         type: "ADD-POST",
-    } as const
-}
-
-export const changeNewTextAC = (newText: string) => {
-    return {
-        type: "CHANGE-NEW-TEXT",
-        newText: newText
+        newPostText
     } as const
 }
 export const setUserProfile = (profile: ProfileType) => {

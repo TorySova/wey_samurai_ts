@@ -3,37 +3,22 @@ import s from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import { DialogsPageType } from '../../redux/store';
-import { Redirect } from 'react-router-dom';
+import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 export type DialogsPropsType = {
     dialogsPage: DialogsPageType;
-    sendMessage: () => void;
+    sendMessage: (addMessage: string) => void;
     newMessageHeandler: (text: string) => void;
     auth: boolean
-    // sendMessage: () => void
-    // newMessageHeandler: (text: string) => void
-    // dialogs: DialogsType[]
-    // messages: MessagesType[]
-    // newMessageText: string
 }
 
 const Dialogs = (props: DialogsPropsType) => {
     let dialodsElements = props.dialogsPage.dialogs.map(it => <DialogItem key={it.id} name={it.name} id={it.id} />);
     let messageElements = props.dialogsPage.messages.map(elem => <Message key={elem.id} message={elem.message} />);
 
-    const sendMessage = () => {
-        props.sendMessage()
+    const onSubmit = (values: AddMessagePropsType) => {
+        props.sendMessage(values.addMessage)
     }
-
-    let newMessageElem = React.createRef<HTMLTextAreaElement>();
-    let newMessageHeandler = () => {
-        let text = newMessageElem.current ? newMessageElem.current.value : ""
-        props.newMessageHeandler(text)
-    }
-
-    // if(!props.auth){
-    //     return <Redirect to={'/login'}/>
-    // }
 
     return (
         <div className={s.dialogsBlock}>
@@ -47,20 +32,33 @@ const Dialogs = (props: DialogsPropsType) => {
                     {messageElements}
                 </div>
                 <div className={s.inputMessage}>
-                    <textarea placeholder="Enter your message"
-                        className={s.textarea}
-                        ref={newMessageElem}
-                        value={props.dialogsPage.newMessageText}
-                        onChange={newMessageHeandler} />
-                    <div className={s.button}>
-                        <img src={'https://www.searchpng.com/wp-content/uploads/2019/02/Send-Icon-PNG-1-715x657.png'} className={s.buttonImg} onClick={sendMessage} />
-                    </div>
+                    <AddMessageReduxForm onSubmit={onSubmit} />
                 </div>
-
             </div>
-
         </div>
     )
 }
+
+export type AddMessagePropsType = {
+    addMessage: string
+}
+
+const AddMessageForm: React.FC<InjectedFormProps<AddMessagePropsType>> = (props: InjectedFormProps<AddMessagePropsType>) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <Field
+                name={'addMessage'}
+                component={'textarea'}
+                placeholder="Enter your message" />
+            <div className={s.button}>
+                <button>send</button>
+            </div>
+        </form>
+    )
+}
+
+export const AddMessageReduxForm = reduxForm<AddMessagePropsType>({
+    form: 'addMessage'
+})(AddMessageForm)
 
 export default Dialogs;

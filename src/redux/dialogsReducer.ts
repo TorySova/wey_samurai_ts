@@ -10,7 +10,6 @@ type initialStateType = {
         message: string;
         id: number;
     }[];
-    newMessageText: string;
 }
 
 const initialState: initialStateType = {
@@ -30,44 +29,27 @@ const initialState: initialStateType = {
         { message: "I`m fine(:", id: 5 },
         { message: "(:", id: 6 },
     ],
-    newMessageText: "",
 }
 
 export const dialodsReducer = (state: DialogsPageType = initialState, action: ActionTypes) => {
     switch (action.type) {
-        case "CHANGE-MESSAGE-TEXT": {
-            let stateCopy = { ...state }
-            stateCopy.newMessageText = action.newMessage;
-            return stateCopy
-        }
         case "SEND-MESSAGE": {
-            const newMessage = {
-                id: new Date().getTime(),
-                message: state.newMessageText
-            };
-            let stateCopy = { ...state };
-            stateCopy.messages = [...state.messages, newMessage]
-            stateCopy.newMessageText = "";
-            return stateCopy
+            const body = action.addMessage            
+            return {
+                ...state,
+                messages: [...state.messages, {id: new Date().getTime(), message: body}],
+            }
         }
     }
     return state
 }
 export type ActionTypes = ActionDialogsTypes | ActionProfileTypes
 
-export type ActionDialogsTypes = ReturnType<typeof sendMessageAC> |
-    ReturnType<typeof changeNewMessageAC>
+export type ActionDialogsTypes = ReturnType<typeof sendMessageAC> 
 
-export const sendMessageAC = () => {
+export const sendMessageAC = (addMessage: string) => {
     return {
         type: "SEND-MESSAGE",
-        // messageText: messageText
-    } as const
-}
-
-export const changeNewMessageAC = (newMessage: string) => {
-    return {
-        type: "CHANGE-MESSAGE-TEXT",
-        newMessage: newMessage
+        addMessage
     } as const
 }

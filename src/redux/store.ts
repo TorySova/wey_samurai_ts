@@ -15,7 +15,7 @@ export type PostsType = {
     likeCounter: number
 }
 export type ProfilePageType = {
-    newPostText: string
+    
     posts: Array<PostsType>
     profile: null | ProfileType
     status: string
@@ -23,7 +23,6 @@ export type ProfilePageType = {
 export type DialogsPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessagesType>
-    newMessageText: string
 }
 export type RootStateType = {
     profilePage: ProfilePageType

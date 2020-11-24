@@ -35,17 +35,17 @@ export type PropsType = {
     updateUserStatus: (status: string) => void
 }
 
-const Profile = (props:PropsType) => {
-	return (
-		<div className={s.profile}>
+const Profile = (props: PropsType) => {
+    return (
+        <div className={s.profile}>
             <div className={s.info}>
-                <Info profile={props.profile} status={props.status} updateUserStatus={props.updateUserStatus}/>
+                <Info profile={props.profile} status={props.status} updateUserStatus={props.updateUserStatus} />
             </div>
-			<div className={s.myPosts}>
-			    <ContainerMyPosts />
+            <div className={s.myPosts}>
+                <ContainerMyPosts />
             </div>
-		</div> 
-	)
+        </div>
+    )
 }
 
 export default Profile;

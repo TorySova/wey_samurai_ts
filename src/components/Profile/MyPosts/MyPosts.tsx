@@ -2,52 +2,26 @@ import React, { KeyboardEvent } from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 import { PostsType } from '../../../redux/store';
+import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 type MyPostsPropsType = {
-	updateNewPostText: (text: string) => void
-	addPost: () => void
-	posts: PostsType[]
-	newPostText: string
+	addPost: (newPostText:string) => void
+	posts:PostsType[]
 }
 
 const MyPosts = (props: MyPostsPropsType) => {
 
 	let postElements = props.posts.map(it => <Post key={it.id} message={it.post} likeCounter={it.likeCounter} />)
 
-	const addPost = () => {
-		if (props.newPostText.trim() !== "") {
-			props.addPost()
-		}
+	const onAddPost = (values: PostFormType) => {
+		props.addPost(values.newPostText)
 	}
-	// const onKeyPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-	// 	if (e.key === "Enter") {
-	// 		props.addPost()
-	// 	}
-	// };
-
-	let newPostElem = React.createRef<HTMLTextAreaElement>();
-	let newTextHeandler = () => {
-		let text = newPostElem.current ? newPostElem.current.value : ""
-		props.updateNewPostText(text)
-	}
-
 	return (
 		<div className={s.myPostBlock}>
 			<div className={s.contentBlock}>
 				<div className={s.inputBlock}>
-					<textarea placeholder="What's new?"
-						className={s.textarea}
-						maxLength={124}
-						// onKeyPress={onKeyPressHandler}
-						value={props.newPostText}
-						onChange={newTextHeandler}
-						ref={newPostElem} />
-					<div className={s.buttonBlock}>
-						<button className={s.button} onClick={addPost} >Add post</button>
-					</div>
-
+					<PostReduxForm onSubmit={onAddPost} />
 				</div>
-
 				<div className={s.posts}>
 					{postElements}
 				</div>
@@ -55,5 +29,28 @@ const MyPosts = (props: MyPostsPropsType) => {
 		</div>
 	)
 }
+
+export type PostFormType = {
+	newPostText: string
+}
+export const PostForm: React.FC<InjectedFormProps<PostFormType>> = (props: InjectedFormProps<PostFormType>) => {
+	return (
+		<form onSubmit={props.handleSubmit}>
+			<Field placeholder="What's new?"
+				name={'newPostText'}
+				component={'textarea'}
+				className={s.textarea}
+				maxLength={124}
+			/>
+			<div className={s.buttonBlock}>
+				<button className={s.button} >Add post</button>
+			</div>
+		</form>
+	)
+}
+
+export const PostReduxForm = reduxForm<PostFormType>({
+	form: 'NewPostForm'
+})(PostForm)
 
 export default MyPosts;

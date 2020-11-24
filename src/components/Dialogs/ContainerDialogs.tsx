@@ -1,5 +1,5 @@
 import React from 'react';
-import { sendMessageAC, changeNewMessageAC, ActionTypes } from '../../redux/dialogsReducer';
+import { sendMessageAC, ActionTypes } from '../../redux/dialogsReducer';
 import Dialogs from './Dialogs';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../redux/store';
@@ -12,11 +12,8 @@ const mapStateToProps = (state: RootStateType) => ({
 })
 
 const mapDispatchToProps = (dispatch: (action: ActionTypes) => void) => ({
-    newMessageHeandler: (text: string) => {
-        dispatch(changeNewMessageAC(text))
-    },
-    sendMessage: () => {
-        dispatch(sendMessageAC())
+    sendMessage: (addMessage: string) => {
+        dispatch(sendMessageAC(addMessage))
     }
 })
 
