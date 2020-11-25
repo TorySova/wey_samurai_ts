@@ -1,23 +1,26 @@
 {
   "files": {
-    "main.css": "/wey_samurai_ts/static/css/main.d2217317.chunk.css",
-    "main.js": "/wey_samurai_ts/static/js/main.ec64fcca.chunk.js",
-    "main.js.map": "/wey_samurai_ts/static/js/main.ec64fcca.chunk.js.map",
+    "main.css": "/wey_samurai_ts/static/css/main.8925f632.chunk.css",
+    "main.js": "/wey_samurai_ts/static/js/main.84e34a0e.chunk.js",
+    "main.js.map": "/wey_samurai_ts/static/js/main.84e34a0e.chunk.js.map",
     "runtime-main.js": "/wey_samurai_ts/static/js/runtime-main.59bf36b3.js",
     "runtime-main.js.map": "/wey_samurai_ts/static/js/runtime-main.59bf36b3.js.map",
-    "static/js/2.6bbd013d.chunk.js": "/wey_samurai_ts/static/js/2.6bbd013d.chunk.js",
-    "static/js/2.6bbd013d.chunk.js.map": "/wey_samurai_ts/static/js/2.6bbd013d.chunk.js.map",
+    "static/css/2.e10cf4f1.chunk.css": "/wey_samurai_ts/static/css/2.e10cf4f1.chunk.css",
+    "static/js/2.adca60f9.chunk.js": "/wey_samurai_ts/static/js/2.adca60f9.chunk.js",
+    "static/js/2.adca60f9.chunk.js.map": "/wey_samurai_ts/static/js/2.adca60f9.chunk.js.map",
     "index.html": "/wey_samurai_ts/index.html",
-    "precache-manifest.c76f7b9e205fd2d302452a7ef522c7e4.js": "/wey_samurai_ts/precache-manifest.c76f7b9e205fd2d302452a7ef522c7e4.js",
+    "precache-manifest.48cfe7426a511b18b130bccd85ebab90.js": "/wey_samurai_ts/precache-manifest.48cfe7426a511b18b130bccd85ebab90.js",
     "service-worker.js": "/wey_samurai_ts/service-worker.js",
-    "static/css/main.d2217317.chunk.css.map": "/wey_samurai_ts/static/css/main.d2217317.chunk.css.map",
-    "static/js/2.6bbd013d.chunk.js.LICENSE.txt": "/wey_samurai_ts/static/js/2.6bbd013d.chunk.js.LICENSE.txt",
+    "static/css/2.e10cf4f1.chunk.css.map": "/wey_samurai_ts/static/css/2.e10cf4f1.chunk.css.map",
+    "static/css/main.8925f632.chunk.css.map": "/wey_samurai_ts/static/css/main.8925f632.chunk.css.map",
+    "static/js/2.adca60f9.chunk.js.LICENSE.txt": "/wey_samurai_ts/static/js/2.adca60f9.chunk.js.LICENSE.txt",
     "static/media/preloader.svg": "/wey_samurai_ts/static/media/preloader.57cdddfd.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.59bf36b3.js",
-    "static/js/2.6bbd013d.chunk.js",
-    "static/css/main.d2217317.chunk.css",
-    "static/js/main.ec64fcca.chunk.js"
+    "static/css/2.e10cf4f1.chunk.css",
+    "static/js/2.adca60f9.chunk.js",
+    "static/css/main.8925f632.chunk.css",
+    "static/js/main.84e34a0e.chunk.js"
   ]
 }
