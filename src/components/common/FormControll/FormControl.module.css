@@ -1,0 +1,31 @@
+/* .error input,
+.error textarea
+{
+    border-bottom: 2px solid red;
+} */
+
+.errorText{
+    color: red
+}
+
+.formControl{
+    margin-top: 5px;
+    outline: none;
+    resize: none;
+    border: 0;
+    width: 90%;
+    text-align: justify;
+    border-bottom: 1px solid;
+    font-size: 17px;
+}
+
+.formControlError{
+    margin-top: 5px;
+    outline: none;
+    resize: none;
+    border: 0;
+    width: 90%;
+    text-align: justify;
+    border-bottom: 2px solid red;
+    font-size: 17px;
+}

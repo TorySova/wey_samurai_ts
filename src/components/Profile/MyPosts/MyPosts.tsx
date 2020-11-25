@@ -1,8 +1,13 @@
 import React, { KeyboardEvent } from 'react';
 import s from './MyPosts.module.css';
+import 'antd/dist/antd.css';
 import Post from './Post/Post';
 import { PostsType } from '../../../redux/store';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
+import { maxLendthCreator, required } from '../../../utils/validators/validator';
+import { Input } from 'antd';
+import TextArea from 'antd/lib/input/TextArea';
+import { Textarea } from '../../common/FormControll/FormsControls';
 
 type MyPostsPropsType = {
 	addPost: (newPostText:string) => void
@@ -33,14 +38,16 @@ const MyPosts = (props: MyPostsPropsType) => {
 export type PostFormType = {
 	newPostText: string
 }
+
+const maxLendth10 = maxLendthCreator(10)
 export const PostForm: React.FC<InjectedFormProps<PostFormType>> = (props: InjectedFormProps<PostFormType>) => {
 	return (
 		<form onSubmit={props.handleSubmit}>
-			<Field placeholder="What's new?"
+			<Field placeholder={"What's new?"}
 				name={'newPostText'}
-				component={'textarea'}
-				className={s.textarea}
-				maxLength={124}
+				component={Textarea}
+				
+				validate={[required, maxLendth10]}
 			/>
 			<div className={s.buttonBlock}>
 				<button className={s.button} >Add post</button>
