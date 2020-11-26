@@ -27,7 +27,7 @@ export const Input: React.FC<PropsType> = ({
     return (
         <div >
             <div >
-                <textarea {...input} {...props} className={showError ? s.formControlError : s.formControl} />
+                <input {...input} {...props} className={showError ? s.formControlError : s.formControl} />
             </div>
             {showError && <span className={s.errorText}>{meta.error}</span>}
         </div>

@@ -6,6 +6,7 @@ import { initialAuthStateType } from '../../redux/authReducer';
 type PropsType = {
     isAuth: boolean
     login: string | null
+    logout: () => void
 }
 
 const Navbar = (props: PropsType) => {
@@ -29,7 +30,8 @@ const Navbar = (props: PropsType) => {
                 </div>
             </div>
             <div className={s.login}>
-                {props.isAuth ? props.login : <NavLink to={'/login'}>Login</NavLink>}
+                {props.isAuth ? <div>{props.login} <button onClick={props.logout}>log out</button></div> : <NavLink to={'/login'}>Login</NavLink>}
+                
             </div>
         </nav>
     )

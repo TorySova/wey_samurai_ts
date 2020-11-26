@@ -39,7 +39,7 @@ export type PostFormType = {
 	newPostText: string
 }
 
-const maxLendth10 = maxLendthCreator(10)
+const maxLendth10 = maxLendthCreator(124)
 export const PostForm: React.FC<InjectedFormProps<PostFormType>> = (props: InjectedFormProps<PostFormType>) => {
 	return (
 		<form onSubmit={props.handleSubmit}>

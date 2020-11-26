@@ -44,7 +44,7 @@ const Dialogs = (props: DialogsPropsType) => {
 export type AddMessagePropsType = {
     addMessage: string
 }
-const maxLength50 = maxLendthCreator(50)
+const maxLength50 = maxLendthCreator(1500)
 const AddMessageForm: React.FC<InjectedFormProps<AddMessagePropsType>> = (props: InjectedFormProps<AddMessagePropsType>) => {
     return (
         <form onSubmit={props.handleSubmit}>

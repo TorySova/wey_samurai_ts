@@ -2,21 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../redux/store';
 import Navbar from './Navbar';
-import { initialAuthStateType, userLogin } from '../../redux/authReducer'
+import { initialAuthStateType, getAuthUserData, logout } from '../../redux/authReducer'
 
 type PropsType = {
     isAuth: boolean
     login: string | null
-    userLogin: () => void
+    getAuthUserData: () => void
+    logout: () => void
 }
 
 class NavbarContainer extends React.Component<PropsType> {
     componentDidMount() {
-        this.props.userLogin()
+        this.props.getAuthUserData()
     }
     render() {
         return (
-            <Navbar isAuth={this.props.isAuth} login={this.props.login}/>
+            <Navbar {...this.props}/>
         )
     }
 }
@@ -28,4 +29,4 @@ const mapStateToProps = (state: RootStateType) => {
     }
 }
 
-export default connect(mapStateToProps, { userLogin })(NavbarContainer);
+export default connect(mapStateToProps, { getAuthUserData, logout })(NavbarContainer);
