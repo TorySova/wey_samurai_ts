@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Field, InjectedFormProps, reduxForm } from 'redux-form'
 import { required } from '../../utils/validators/validator'
 import { Input } from '../common/FormControll/FormsControls'
+import s from '../common/FormControll/FormControl.module.css'
 import {login} from '../../redux/authReducer'
 import { RootState } from '../../redux/redux-store'
 import { Redirect } from 'react-router-dom'
@@ -11,6 +12,10 @@ export type FormDataType = {
     email: string
     password: string
     rememberMe: boolean
+}
+
+type mapStateToPropsType = {
+    isAuth: boolean
 }
 
 export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props: InjectedFormProps<FormDataType>) => {
@@ -25,6 +30,9 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props: Inje
             <div>
                 <Field component={'input'} type='checkbox' name={'rememberMe'} /> remember me
             </div>
+            {props.error && <div className={s.errorForm}>
+                {props.error}
+            </div>}
             <div>
                 <button>login</button>
             </div>
@@ -52,7 +60,7 @@ const Login = (props: any) => {
     </div>
 }
 
-const mapStateToProps = (state: RootState) =>({
+const mapStateToProps = (state: RootState): mapStateToPropsType =>({
     isAuth: state.auth.isAuth
 })
 
