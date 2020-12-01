@@ -6,7 +6,7 @@ type PropsType = {
 }
 
 export const ProfileStatus = (props: PropsType) => {
-    
+    // debugger
     let [editMode, setEditMode] = useState<boolean>(false)
     let [newStatus, setNewStatus] = useState(props.status)
 
@@ -15,6 +15,7 @@ export const ProfileStatus = (props: PropsType) => {
     }
 
     const onEditMode = () => {
+        setNewStatus(props.status)
         setEditMode(true)
 
     }
@@ -28,7 +29,7 @@ export const ProfileStatus = (props: PropsType) => {
             {
                 editMode
                     ? <input value={newStatus} autoFocus onBlur={offEditMode} onChange={onChangeHandler} />
-                    : <span onDoubleClick={onEditMode}>{newStatus}</span>
+                    : <span onDoubleClick={onEditMode}>{props.status}</span>
             }
         </div>
     )

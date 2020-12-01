@@ -1,3 +1,4 @@
+import { appReducer, initialAppStateType } from './appReducer';
 import { initialAuthStateType } from './authReducer';
 import { ProfileType } from './../components/Profile/Profile';
 import { initialStateType } from './usersReducer';
@@ -29,6 +30,7 @@ export type RootStateType = {
     dialogsPage:DialogsPageType
     usersPage: initialStateType
     auth: initialAuthStateType
+    app: initialAppStateType,
 }
 
 // export type StoreType = {

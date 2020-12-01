@@ -47,7 +47,6 @@ export const LoginReduxForm = reduxForm<FormDataType>({
 const Login = (props: any) => {
     const onSubmit = (formData: FormDataType) => {
         props.login(formData)
-
     }
 
     if(props.isAuth){

@@ -36,6 +36,7 @@ export type PropsType = {
 }
 
 const Profile = (props: PropsType) => {
+    // debugger
     return (
         <div className={s.profile}>
             <div className={s.info}>
