@@ -28,7 +28,6 @@ export const setInitializedAC = () => ({
 
 export const initializeApp = () => async (dispatch: any) => {
    await dispatch(getAuthUserData())
-   debugger
 
    dispatch(setInitializedAC())
     // debugger
