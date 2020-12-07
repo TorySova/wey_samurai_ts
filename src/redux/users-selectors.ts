@@ -1,6 +1,5 @@
 import { RootStateType } from './store';
 
-
 export const getUsers = (state: RootStateType) => {
     return state.usersPage
 }
