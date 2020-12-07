@@ -2,11 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../redux/store';
 import {
-    acceptFollow, initialStateType,
-    setCurrentPage, setUsers,
-    acceptUnFollow, setTotalUsersCount,
+ initialStateType,
+    setCurrentPage, setUsers, setTotalUsersCount,
     toggleIsFetching, toggleIsFollowingProgress,
-    requestUsers
+    requestUsers, followThunkAC, unFollowThunkAC
 } from '../../redux/usersReducer';
 import s from './Users.module.css'
 import Preloader from '../common/preloader/Preloader';
@@ -30,6 +29,8 @@ type PropsType = {
     toggleIsFetching: (isFetching: boolean) => void
     toggleIsFollowingProgress: (isFetching: boolean, userId: number) => void
     followingInProgress: Array<any>
+    followThunkAC: (userId: number) => void
+    unFollowThunkAC: (userId: number) => void
     requestUsers: (currentPage: number, pageSize: number) => void
 }
 
@@ -39,9 +40,15 @@ class UsersContainer extends React.Component<PropsType> {
     }
 
     onPageChanget = (pagesNamber: number) => {
-
         this.props.requestUsers(pagesNamber, this.props.pageSize)
+    }
 
+    onFollow = (userId: number) => {
+        this.props.followThunkAC(userId)
+    }
+
+    onUnFollow = (userId: number) => {
+        this.props.unFollowThunkAC(userId)
     }
 
     render() {
@@ -54,8 +61,8 @@ class UsersContainer extends React.Component<PropsType> {
                 currentPage={this.props.currentPage}
                 onPageChanget={this.onPageChanget}
                 usersPage={this.props.usersPage}
-                acceptFollow={this.props.acceptFollow}
-                acceptUnFollow={this.props.acceptUnFollow}
+                acceptFollow={this.onFollow}
+                acceptUnFollow={this.onUnFollow}
                 followingInProgress={this.props.followingInProgress}
             />
         </>
@@ -87,5 +94,5 @@ const mapStateToProps = (state: RootStateType) => {
 
 export default compose(
     withAuthRedirect,
-    connect(mapStateToProps, { acceptFollow, acceptUnFollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleIsFollowingProgress, requestUsers })
+    connect(mapStateToProps, { followThunkAC, unFollowThunkAC, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleIsFollowingProgress, requestUsers })
 )(UsersContainer);

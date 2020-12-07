@@ -16,7 +16,7 @@ type PropsType = {
     followingInProgress: Array<any>  
 }
 
-const Users = (props: PropsType) => {   
+const Users = (props: PropsType) => {
     const pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pageCount; i++) {

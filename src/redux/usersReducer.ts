@@ -149,7 +149,8 @@ export const requestUsers = (currentPage: number, pageSize: number) => {
     }
 }
 
-export const follow = (userId: number) => {
+export const followThunkAC = (userId: number) => {
+    
     return (dispatch: any) => {
         dispatch(toggleIsFollowingProgress(true, userId));
         usersAPI.follow(userId)
@@ -162,7 +163,7 @@ export const follow = (userId: number) => {
     }
 }
 
-export const unFollow = (userId: number) => {
+export const unFollowThunkAC = (userId: number) => {
     return (dispatch: any) => {
         dispatch(toggleIsFollowingProgress(true, userId))
         usersAPI.unFollow(userId)
