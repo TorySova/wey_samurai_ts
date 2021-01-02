@@ -40,17 +40,19 @@ class App extends React.Component<AppPropsType, any> {
           <div className="content">
             <Header />
             <Switch>
-              <Route exact path='/profile/:userId?'
+            <Route exact path={'/'}
                 render={() => <ProfileContainer />} />
-              <Route path='/dialogs'
+              <Route  path={'/profile/:userId?'}
+                render={() => <ProfileContainer />} />
+              <Route path={'/dialogs'}
                 render={() => <ContainerDialogs />} />
-              <Route path='/news'
+              <Route path={'/news'}
                 render={() => <News />} />
-              <Route path='/settings'
+              <Route path={'/settings'}
                 render={() => <Settings />} />
-              <Route path='/users'
+              <Route path={'/users'}
                 render={() => <UsersContainer />} />
-              <Route path='/login'
+              <Route path={'/login'}
                 render={() => <Login />} />
               <Route render={() => <h1>404: PAGE NOT FOUND</h1>} />
             </Switch>

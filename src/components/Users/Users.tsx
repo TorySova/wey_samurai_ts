@@ -1,8 +1,10 @@
 import React from 'react';
-import { initialStateType } from '../../redux/usersReducer';
+import { initialStateType, setCurrentPage } from '../../redux/usersReducer';
 import s from './Users.module.css';
 import userPhoto from '../../assets/images/unnamed.png';
 import { NavLink } from 'react-router-dom';
+import 'antd/dist/antd.css';
+import { Pagination } from 'antd';
 
 
 type PropsType = {
@@ -17,18 +19,22 @@ type PropsType = {
 }
 
 const Users = (props: PropsType) => {
-    const pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    let pages = [];
-    for (let i = 1; i <= pageCount; i++) {
-        pages.push(i)
-    }
+    // const pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
+    // let pages = [];
+    // for (let i = 1; i <= pageCount; i++) {
+    //     pages.push(i)
+    // }
+    const onChange = (pagesNamber: number) => {
+		props.onPageChanget(pagesNamber)
+	}
     return <div>
-        <div className={s.users}>
+        <Pagination total={props.totalUsersCount} onChange={onChange} size='small' showSizeChanger={false}/>
+        {/* <div className={s.users}>
             {pages.map((p, index) => {             
                 return <span key={index}className={props.currentPage === p? s.selectedPage : ''} 
                 onClick={() => { props.onPageChanget(p) }}>{p}</span>       
             })}        
-        </div>      
+        </div>       */}
         {
             props.usersPage.users.map(u => <div key={u.id} className={s.item}>
                 <div className={s.block1}>

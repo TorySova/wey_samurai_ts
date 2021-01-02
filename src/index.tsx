@@ -7,10 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import store from './redux/redux-store'
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
-// import StoreContext from './StoreContext';
 
-
-// export let renderTree = (state: RootStateType) => {
   ReactDOM.render(
     <HashRouter>
       <Provider store={store}>
@@ -19,12 +16,6 @@ import { HashRouter } from 'react-router-dom';
     </HashRouter>,
     document.getElementById('root')
   );
-// }
-// renderTree(store.getState());
-// store.subscribe(() => {
-//   let state = store.getState()
-//   renderTree(state)
-// });
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
