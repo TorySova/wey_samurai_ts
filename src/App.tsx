@@ -39,7 +39,7 @@ class App extends React.Component<AppPropsType, any> {
           </div>
           <div className="content">
             <Header />
-            <Route path='/profile/:userId?'
+            <Route exact path='/profile/:userId?'
               render={() => <ProfileContainer />} />
             <Route path='/dialogs'
               render={() => <ContainerDialogs />} />
