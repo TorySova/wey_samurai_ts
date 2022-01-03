@@ -19,7 +19,9 @@ const MyPosts = (props: MyPostsPropsType) => {
 	let postElements = props.posts.map(it => <Post key={it.id} message={it.post} likeCounter={it.likeCounter} />)
 
 	const onAddPost = (values: PostFormType) => {
+		debugger
 		props.addPost(values.newPostText)
+		values.newPostText = ''
 	}
 	return (
 		<div className={s.myPostBlock}>

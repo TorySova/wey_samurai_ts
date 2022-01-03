@@ -20,6 +20,7 @@ const Dialogs = (props: DialogsPropsType) => {
 
     const onSubmit = (values: AddMessagePropsType) => {
         props.sendMessage(values.addMessage)
+        values.addMessage = ''
     }
 
     return (
