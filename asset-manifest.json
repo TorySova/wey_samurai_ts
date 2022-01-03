@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/wey_samurai_ts/static/css/main.7e0b80fa.chunk.css",
-    "main.js": "/wey_samurai_ts/static/js/main.8071f296.chunk.js",
-    "main.js.map": "/wey_samurai_ts/static/js/main.8071f296.chunk.js.map",
+    "main.js": "/wey_samurai_ts/static/js/main.47c303a0.chunk.js",
+    "main.js.map": "/wey_samurai_ts/static/js/main.47c303a0.chunk.js.map",
     "runtime-main.js": "/wey_samurai_ts/static/js/runtime-main.59bf36b3.js",
     "runtime-main.js.map": "/wey_samurai_ts/static/js/runtime-main.59bf36b3.js.map",
     "static/css/2.ef440c72.chunk.css": "/wey_samurai_ts/static/css/2.ef440c72.chunk.css",
     "static/js/2.9115b36d.chunk.js": "/wey_samurai_ts/static/js/2.9115b36d.chunk.js",
     "static/js/2.9115b36d.chunk.js.map": "/wey_samurai_ts/static/js/2.9115b36d.chunk.js.map",
     "index.html": "/wey_samurai_ts/index.html",
-    "precache-manifest.56c3207e9ee120c084b75e0f267a01d3.js": "/wey_samurai_ts/precache-manifest.56c3207e9ee120c084b75e0f267a01d3.js",
+    "precache-manifest.1ddc34d030025a475c4ff7e1aa4352eb.js": "/wey_samurai_ts/precache-manifest.1ddc34d030025a475c4ff7e1aa4352eb.js",
     "service-worker.js": "/wey_samurai_ts/service-worker.js",
     "static/css/2.ef440c72.chunk.css.map": "/wey_samurai_ts/static/css/2.ef440c72.chunk.css.map",
     "static/css/main.7e0b80fa.chunk.css.map": "/wey_samurai_ts/static/css/main.7e0b80fa.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/css/2.ef440c72.chunk.css",
     "static/js/2.9115b36d.chunk.js",
     "static/css/main.7e0b80fa.chunk.css",
-    "static/js/main.8071f296.chunk.js"
+    "static/js/main.47c303a0.chunk.js"
   ]
 }
